@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="most_trusted_weather_app_around_nthe_globe">Most Trusted Weather App Around The Globe</string>
+    <string name="agree_and_continue">Agree And Continue</string>
+    <string name="by_agree_you_will_have_to_agree_with_our_term_s_conditions">By Agree You Will Have to Agree With Our <u>Term’s &amp; Conditions</u></string>
+    <string name="subscription">Subscription</string>
+    <string name="login">Login</string>
+    <string name="find_my_location">Find My Location</string>
+    <string name="search_by_date">Search By Date</string>
+    <string name="search_by_location">Search By Location</string>
+    <string name="weather_format">Weather Format</string>
+    <string name="terms_of_use">Terms Of use</string>
+    <string name="v_1_0_2">V 1.0.2</string>
+    <string name="about_us">About Us</string>
+    <string name="help">Help</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="current_temperature">Current Temperature</string>
+    <string name="feels_like">Feels Like</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="probability_of_rain">Probability Of Rain</string>
+    <string name="weather_news">Weather News</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="after_tomorrow">After Tomorrow</string>
+    <string name="select_date">Select Date</string>
+    <string name="app_description">App Description</string>
+    <string name="app_version">App Version</string>
+    <string name="developed_amp_owned_by"><![CDATA[Developed & Owned By:]]></string>
+    <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has</string>
+    <string name="email">Email:</string>
+    <string name="website">Website</string>
+    <string name="copyright">Copyright:</string>
+    <string name="temperature">Temperature</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="pressure">Pressure</string>
+    <string name="precipitation">Precipitation</string>
+    <string name="distance">Distance</string>
+    <string name="time_format">Time Format</string>
+    <string name="you_are_not_subscribed_to_any_pack">You are not subscribed to any pack</string>
+    <string name="cancel_subscription">Cancel Subscription</string>
+    <string name="get_premium">Get Premium</string>
+    <string name="upgrade_to_premium">Upgrade to Premium</string>
+    <string name="skip">Skip</string>
+    <string name="get_current_location">Get Current Location</string>
+    <string name="_18">18</string>
+
+
+</resources>
