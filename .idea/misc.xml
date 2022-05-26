@@ -7,10 +7,19 @@
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/drawable/facebookicon.xml" value="0.361" />
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/drawable/googleicon.xml" value="0.361" />
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/drawable/gradientbg.xml" value="0.361" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/drawable/ic_location.xml" value="0.3375" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/drawable/ic_logout.xml" value="0.3375" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/drawable/ic_my_location.xml" value="0.3375" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/drawable/ic_subscription.xml" value="0.3375" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/drawable/nav_background.xml" value="0.3375" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/drawable/radiusbg.xml" value="0.361" />
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_login.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_splash_screen.xml" value="0.25" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/item_news.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/item_recyclerview.xml" value="0.5" />
+        <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/item_weather.xml" value="0.2975630611372381" />
       </map>
     </option>
   </component>
@@ -19,5 +28,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.18" />
+      </ProjectState>
+    </option>
   </component>
 </project>

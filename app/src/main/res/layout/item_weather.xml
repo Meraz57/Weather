@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_90sdp"
+    android:layout_height="@dimen/_110sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp"
+    android:layout_margin="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_20sdp">
+
+   <LinearLayout
+       android:background="#1A223C"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:gravity="center"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Light Rain"
+           android:textAlignment="center"
+           android:textColor="@color/white"
+           android:fontFamily="@font/poppins_400"
+           android:textSize="@dimen/_12sdp"
+           />
+
+       <ImageView
+           android:layout_marginTop="@dimen/_5sdp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/weathericon"
+           />
+       <TextView
+           android:layout_marginTop="@dimen/_5sdp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="2:00 PM"
+           android:textColor="#BFFFFFFF"
+           android:fontFamily="@font/poppins_400"
+           android:textSize="@dimen/_10sdp"/>
+
+
+   </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
