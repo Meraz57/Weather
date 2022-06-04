@@ -21,4 +21,8 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/_10sdp</item>
     </style>
+
+    <style name="Custom.RadioText" parent="Theme.AppCompat.Light">
+
+    </style>
 </resources>

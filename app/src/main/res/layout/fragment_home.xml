@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+    android:id="@+id/drawerLayout"
     tools:context=".ui.Home"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <androidx.core.widget.NestedScrollView
@@ -30,6 +31,7 @@
             android:layout_marginTop="@dimen/_20sdp">
 
             <ImageView
+                android:id="@+id/btnDrawer"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
@@ -362,8 +364,8 @@
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_weather"
         android:orientation="horizontal"
-        tools:itemCount="1"
-        />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="10"/>
 
         <LinearLayout
             android:id="@+id/btnCurrentWeather"
@@ -542,6 +544,7 @@
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_news"
             android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
 
 
@@ -728,7 +731,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:fontFamily="@font/poppins_400"
-                    android:text="@string/search_by_location"
+                    android:text="Find By Location"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_11ssp" />
 

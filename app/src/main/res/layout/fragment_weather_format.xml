@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000918"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.WeatherFormat">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_back_"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_500"
+            android:textColor="@color/white"
+            android:text="Weather Format"
+            android:textSize="@dimen/_12sdp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginRight="@dimen/_16sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_400"
+                android:text="@string/temperature"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp" />
+
+            <RadioGroup
+                android:id="@+id/rgTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:backgroundTint="#181542"
+                android:layout_alignParentEnd="true">
+
+                <RadioButton
+                    android:id="@+id/radioDegree"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:text="°C"
+                    android:fontFamily="@font/poppins_400"
+                    android:textSize="@dimen/_12ssp"
+                    android:button="@null"
+                    android:background="@drawable/bg_radio"
+                    android:textColor="@color/white"
+
+                    android:theme="@style/Custom.RadioText"
+                    android:gravity="center_horizontal" />
+
+                <RadioButton
+                    android:id="@+id/radioFarenheit"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_400"
+                    android:textSize="@dimen/_12ssp"
+                    android:button="@null"
+                    android:background="@drawable/bg_radio"
+                    android:theme="@style/Custom.RadioText"
+                    android:gravity="center_horizontal" />
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_400"
+                android:text="@string/wind_speed"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp" />
+
+            <RadioGroup
+                android:id="@+id/rgWindSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true">
+
+                <RadioButton
+                    android:id="@+id/radioMs"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_radio"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_400"
+                    android:gravity="center_horizontal"
+                    android:text="m/s"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp"
+                    android:theme="@style/Custom.RadioText" />
+
+                <RadioButton
+                    android:id="@+id/radioKmh"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:text="Km/h"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_400"
+                    android:textSize="@dimen/_12ssp"
+                    android:button="@null"
+                    android:background="@drawable/bg_radio"
+                    android:theme="@style/Custom.RadioText"
+                    android:gravity="center_horizontal" />
+
+                <RadioButton
+                    android:id="@+id/radioMph"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:text="mph"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_400"
+                    android:textSize="@dimen/_12ssp"
+                    android:button="@null"
+                    android:background="@drawable/bg_radio"
+                    android:theme="@style/Custom.RadioText"
+                    android:gravity="center_horizontal" />
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_400"
+                android:text="@string/time_format"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp" />
+
+            <RadioGroup
+                android:id="@+id/rgTimeFormat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true">
+
+                <RadioButton
+                    android:id="@+id/radio24hr"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:text="24 Hr"
+                    android:fontFamily="@font/poppins_400"
+                    android:textSize="@dimen/_12ssp"
+                    android:button="@null"
+                    android:background="@drawable/bg_radio"
+                    android:textColor="@color/white"
+                    android:theme="@style/Custom.RadioText"
+                    android:gravity="center_horizontal" />
+
+                <RadioButton
+                    android:id="@+id/radio12hr"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:text="12 Hr"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_400"
+                    android:textSize="@dimen/_12ssp"
+                    android:button="@null"
+                    android:background="@drawable/bg_radio"
+                    android:theme="@style/Custom.RadioText"
+                    android:gravity="center_horizontal" />
+
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

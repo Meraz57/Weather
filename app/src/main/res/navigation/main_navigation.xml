@@ -18,8 +18,24 @@
         android:id="@+id/home"
         android:name="com.example.weather.ui.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-     <fragment
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_findByLocation"
+            app:destination="@id/findByLocation" />
+        <action
+            android:id="@+id/action_home_to_searchByDate"
+            app:destination="@id/searchByDate" />
+        <action
+            android:id="@+id/action_home_to_weatherFormat"
+            app:destination="@id/weatherFormat" />
+        <action
+            android:id="@+id/action_home_to_aboutUs"
+            app:destination="@id/aboutUs" />
+        <action
+            android:id="@+id/action_home_to_findMyLocation"
+            app:destination="@id/findMyLocation" />
+    </fragment>
+      <fragment
          android:id="@+id/splashScreen"
          android:name="com.example.weather.ui.SplashScreen"
          android:label="fragment_splash_screen"
@@ -28,4 +44,29 @@
              android:id="@+id/action_splashScreen2_to_login"
              app:destination="@id/login" />
      </fragment>
- </navigation>
+    <fragment
+        android:id="@+id/findByLocation"
+        android:name="com.example.weather.ui.FindByLocation"
+        android:label="fragment_find_by_location"
+        tools:layout="@layout/fragment_find_by_location" />
+    <fragment
+        android:id="@+id/searchByDate"
+        android:name="com.example.weather.ui.SearchByDate"
+        android:label="fragment_search_by_date"
+        tools:layout="@layout/fragment_search_by_date" />
+    <fragment
+        android:id="@+id/weatherFormat"
+        android:name="com.example.weather.ui.WeatherFormat"
+        android:label="fragment_weather_format"
+        tools:layout="@layout/fragment_weather_format" />
+    <fragment
+        android:id="@+id/aboutUs"
+        android:name="com.example.weather.ui.AboutUs"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/findMyLocation"
+        android:name="com.example.weather.ui.FindMyLocation"
+        android:label="fragment_find_my_location"
+        tools:layout="@layout/fragment_find_my_location" />
+</navigation>

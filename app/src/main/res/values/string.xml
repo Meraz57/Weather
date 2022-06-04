@@ -36,6 +36,8 @@
     <string name="pressure">Pressure</string>
     <string name="precipitation">Precipitation</string>
     <string name="distance">Distance</string>
+    <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has</string>
+
     <string name="time_format">Time Format</string>
     <string name="you_are_not_subscribed_to_any_pack">You are not subscribed to any pack</string>
     <string name="cancel_subscription">Cancel Subscription</string>
@@ -44,8 +46,7 @@
     <string name="skip">Skip</string>
     <string name="get_current_location">Get Current Location</string>
     <string name="_18">18</string>
-    <string name="thunderstrom">Thunderstorm</string>
-    <string name="_34">34%</string>
+    <string name="thunderstrom">Thunderstorm</string>    <string name="_34">34%</string>
     <string name="change_of_rain">Change Of Rain</string>
 
 </resources>

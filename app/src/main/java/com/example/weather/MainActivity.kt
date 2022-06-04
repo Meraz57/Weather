@@ -13,11 +13,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnagree=findViewById<LinearLayout>(R.id.btnAgree)
-        btnagree.setOnClickListener{
-
-
-        }
-
     }
 }

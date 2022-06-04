@@ -10,12 +10,11 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.weather.R
-import com.example.weather.databinding.FragmentHomeBinding
+import com.example.weather.databinding.FragmentSearchByDateBinding
 
 
-class Home : Fragment() {
-
-    private var _binding:FragmentHomeBinding?=null
+class SearchByDate : Fragment() {
+    private var _binding:FragmentSearchByDateBinding?=null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,16 +25,15 @@ class Home : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       _binding= FragmentHomeBinding.inflate(inflater,container,false)
+        // Inflate the layout for this fragment
+       _binding= FragmentSearchByDateBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         controlNavigationDrawer()
     }
-
     private fun controlNavigationDrawer() {
 
         binding.btnDrawer.setOnClickListener {
@@ -47,42 +45,31 @@ class Home : Fragment() {
         }
 
         binding.btnSearchByDate.setOnClickListener {
-        binding.drawerLayout.closeDrawer(GravityCompat.START)
-        findNavController().navigate(R.id.action_home_to_searchByDate)
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            findNavController().navigate(R.id.action_home_to_searchByDate)
         }
 
         binding.btnWeatherFormat.setOnClickListener{
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController().navigate(R.id.action_home_to_weatherFormat)
-
-        }
-
-        binding.btnCurrentWeather.setOnClickListener {
-        var isdetailsweatheropen=false
-        isdetailsweatheropen=!isdetailsweatheropen
-            binding.detailsCurrentWeather.isVisible=isdetailsweatheropen
         }
 
         binding.btnAboutUs.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController().navigate(R.id.action_home_to_aboutUs)
         }
+
         binding.btnSearchByLocation.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController().navigate(R.id.action_home_to_findByLocation)
 
         }
-        binding.btnFindMyLocation.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_findMyLocation)
-        }
-
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null
+
     }
 
 }

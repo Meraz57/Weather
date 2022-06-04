@@ -7,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.weather.R
-import com.example.weather.databinding.FragmentLoginBinding
+import com.example.weather.databinding.FragmentWeatherFormatBinding
 
 
-class Login : Fragment() {
-
-    private var _binding:FragmentLoginBinding?=null
+class WeatherFormat : Fragment() {
+    private var _binding:FragmentWeatherFormatBinding?=null
     private val binding get() = _binding!!
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,19 +22,19 @@ class Login : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       _binding= FragmentLoginBinding.inflate(inflater,container,false)
+        // Inflate the layout for this fragment
+      _binding= FragmentWeatherFormatBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnGoogle.setOnClickListener {
-            findNavController().navigate(R.id.action_login_to_home2)
 
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
     }
-    
 
 
 }

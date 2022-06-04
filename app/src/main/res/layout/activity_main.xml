@@ -1,76 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:layout_gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_600"
-            android:letterSpacing="0.2"
-            android:text="Weather Update"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_400"
-            android:text="@string/most_trusted_weather_app_around_nthe_globe"
-            android:textAlignment="center"
-            android:textColor="#BFFFFFFF"
-            android:textSize="@dimen/_8sdp" />
-
-        <LinearLayout
-            android:id="@+id/btnAgree"
-            android:layout_width="345dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_100sdp"
-            android:background="@drawable/btn_bg"
-            android:gravity="center">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_400"
-                android:text="Agree &amp; Continue"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_10sdp" />
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/termsAndCondition"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_30sdp"
-        android:fontFamily="@font/poppins_400"
-        android:text="@string/by_agree_you_will_have_to_agree_with_our_term_s_conditions"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_8ssp" />
-
-
-
-
-
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_navigation" />
 </RelativeLayout>
