@@ -6,9 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.weather.Adapter.AdapterWeather
+import com.example.weather.Adapter.NewsAdapter
 import com.example.weather.R
 import com.example.weather.databinding.FragmentHomeBinding
 
@@ -33,7 +38,9 @@ class Home : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        RecyclerViewHandle()
         controlNavigationDrawer()
+
     }
 
     private fun controlNavigationDrawer() {
@@ -76,7 +83,32 @@ class Home : Fragment() {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController().navigate(R.id.action_home_to_findMyLocation)
         }
+        binding.btnTermsCondition.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            findNavController().navigate(R.id.action_home_to_teamsCondition)
+        }
 
+        binding.btnFindMyLocation.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            findNavController().navigate(R.id.action_home_to_findMyLocation)
+
+        }
+
+        binding.btnSubscription.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            findNavController().navigate(R.id.action_home_to_upgradeToPremium)
+        }
+
+
+    }
+
+    private fun RecyclerViewHandle() {
+
+        val weatherAdapter=AdapterWeather()
+        binding.recyclerview.adapter=weatherAdapter
+
+        val newsAdapter=NewsAdapter()
+        binding.newsRecycler.adapter=newsAdapter
 
     }
 

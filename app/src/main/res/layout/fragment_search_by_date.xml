@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#000918"
+    android:background="@color/navyblue"
     android:id="@+id/drawerLayout"
     android:orientation="vertical"
     tools:context=".ui.SearchByDate">
@@ -49,18 +49,22 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
                 android:padding="@dimen/_2sdp"
-                android:src="@drawable/ic_calender"
-                />
+                android:src="@drawable/ic_calender" />
 
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchbyDateRecycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp" />
+            android:layout_marginTop="@dimen/_8sdp"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_weather"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:orientation="horizontal"
 
+            />
 
 
     </LinearLayout>

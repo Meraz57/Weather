@@ -215,7 +215,7 @@
                     android:textSize="@dimen/_8ssp"
                     app:layout_constraintBottom_toBottomOf="@id/imageLocation"
                     app:layout_constraintStart_toEndOf="@id/imageLocation"
-                    android:text="@string/nukunjo_2_dhaka" />
+                    android:text="Nikunja 2 Dhaka" />
 
 
                 <TextView

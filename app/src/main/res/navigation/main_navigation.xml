@@ -34,6 +34,12 @@
         <action
             android:id="@+id/action_home_to_findMyLocation"
             app:destination="@id/findMyLocation" />
+        <action
+            android:id="@+id/action_home_to_teamsCondition"
+            app:destination="@id/teamsCondition" />
+        <action
+            android:id="@+id/action_home_to_upgradeToPremium"
+            app:destination="@id/upgradeToPremium" />
     </fragment>
       <fragment
          android:id="@+id/splashScreen"
@@ -43,12 +49,15 @@
          <action
              android:id="@+id/action_splashScreen2_to_login"
              app:destination="@id/login" />
-     </fragment>
+          <action
+              android:id="@+id/action_splashScreen_to_teamsCondition"
+              app:destination="@id/teamsCondition" />
+      </fragment>
     <fragment
         android:id="@+id/findByLocation"
         android:name="com.example.weather.ui.FindByLocation"
         android:label="fragment_find_by_location"
-        tools:layout="@layout/fragment_find_by_location" />
+        tools:layout="@layout/fragment_find_my_location" />
     <fragment
         android:id="@+id/searchByDate"
         android:name="com.example.weather.ui.SearchByDate"
@@ -69,4 +78,23 @@
         android:name="com.example.weather.ui.FindMyLocation"
         android:label="fragment_find_my_location"
         tools:layout="@layout/fragment_find_my_location" />
+    <fragment
+        android:id="@+id/teamsCondition"
+        android:name="com.example.weather.ui.TeamsCondition"
+        android:label="fragment_teams_condition"
+        tools:layout="@layout/fragment_teams_condition" />
+    <fragment
+        android:id="@+id/upgradeToPremium"
+        android:name="com.example.weather.ui.Subscription.UpgradeToPremium"
+        android:label="fragment_upgrade_to_premium"
+        tools:layout="@layout/fragment_upgrade_to_premium" >
+        <action
+            android:id="@+id/action_upgradeToPremium_to_becomePremium"
+            app:destination="@id/becomePremium" />
+    </fragment>
+    <fragment
+        android:id="@+id/becomePremium"
+        android:name="com.example.weather.ui.Subscription.BecomePremium"
+        android:label="fragment_become_premium"
+        tools:layout="@layout/fragment_become_premium" />
 </navigation>

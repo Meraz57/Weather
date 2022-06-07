@@ -79,7 +79,7 @@
                 android:text="Last Updated : "
                 android:textColor="#BFFFFFFF"
 
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/time"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="10:10 PM"
                 android:textColor="#BFFFFFFF"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_10sdp" />
 
             <ImageView
                 android:id="@+id/refresh_btn"
@@ -540,10 +540,12 @@
             android:layout_marginBottom="@dimen/_15sdp"
             />
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/newsRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_news"
             android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_15sdp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
 
