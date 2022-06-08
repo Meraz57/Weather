@@ -32,13 +32,6 @@ private var _binding:FragmentFindByLocationBinding?=null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnDrawer.setOnClickListener {
-            if (binding.drawerLayout.isDrawerOpen(Gravity.LEFT)) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            } else {
-                binding.drawerLayout.openDrawer(GravityCompat.START)
-            }
-        }
 
 
 

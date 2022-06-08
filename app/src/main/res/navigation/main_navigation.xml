@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-     app:startDestination="@id/splashScreen">
+     app:startDestination="@id/home">
 
-    <fragment
-        android:id="@+id/login"
-        android:name="com.example.weather.ui.Login"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_login_to_home2"
-            app:destination="@id/home" />
-    </fragment>
     <fragment
         android:id="@+id/home"
         android:name="com.example.weather.ui.Home"
@@ -40,19 +31,10 @@
         <action
             android:id="@+id/action_home_to_upgradeToPremium"
             app:destination="@id/upgradeToPremium" />
+        <action
+            android:id="@+id/action_home_to_login"
+            app:destination="@id/login" />
     </fragment>
-      <fragment
-         android:id="@+id/splashScreen"
-         android:name="com.example.weather.ui.SplashScreen"
-         android:label="fragment_splash_screen"
-         tools:layout="@layout/fragment_splash_screen" >
-         <action
-             android:id="@+id/action_splashScreen2_to_login"
-             app:destination="@id/login" />
-          <action
-              android:id="@+id/action_splashScreen_to_teamsCondition"
-              app:destination="@id/teamsCondition" />
-      </fragment>
     <fragment
         android:id="@+id/findByLocation"
         android:name="com.example.weather.ui.FindByLocation"
@@ -97,4 +79,9 @@
         android:name="com.example.weather.ui.Subscription.BecomePremium"
         android:label="fragment_become_premium"
         tools:layout="@layout/fragment_become_premium" />
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.weather.ui.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>

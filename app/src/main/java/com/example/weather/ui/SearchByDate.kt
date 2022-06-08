@@ -36,42 +36,13 @@ class SearchByDate : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        controlNavigationDrawer()
         handleSelectDate()
         handleWeatherAdapter()
-    }
-    private fun controlNavigationDrawer() {
-
-        binding.btnDrawer.setOnClickListener {
-            if (binding.drawerLayout.isDrawerOpen(Gravity.LEFT)) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            } else {
-                binding.drawerLayout.openDrawer(GravityCompat.START)
-            }
-        }
-
-        binding.btnSearchByDate.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_searchByDate)
-        }
-
-        binding.btnWeatherFormat.setOnClickListener{
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_weatherFormat)
-        }
-
-        binding.btnAboutUs.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_aboutUs)
-        }
-
-        binding.btnSearchByLocation.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_findByLocation)
-
-        }
 
     }
+
+
+
 
     private fun handleWeatherAdapter(){
         val adapterWeather=AdapterWeather()

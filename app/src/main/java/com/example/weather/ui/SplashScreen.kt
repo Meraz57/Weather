@@ -1,6 +1,6 @@
 package com.example.weather.ui
 
-import android.annotation.SuppressLint
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,10 +34,10 @@ class SplashScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnAgree.setOnClickListener {
-            findNavController().navigate(R.id.action_splashScreen2_to_login)
+            findNavController().navigate(R.id.action_splashScreen2_to_login2)
         }
         binding.termsAndCondition.setOnClickListener {
-            findNavController().navigate(R.id.action_splashScreen_to_teamsCondition)
+            findNavController().navigate(R.id.action_splashScreen2_to_teamsCondition2)
         }
 
     }

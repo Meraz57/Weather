@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/_90sdp"
     android:layout_height="@dimen/_110sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="@dimen/_10sdp"
+   android:background="@drawable/weather_bg"
     android:layout_margin="@dimen/_10sdp"
     app:cardCornerRadius="@dimen/_20sdp">
 
    <LinearLayout
-       android:background="#1A223C"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:gravity="center"
@@ -43,4 +43,4 @@
    </LinearLayout>
 
 
-</androidx.cardview.widget.CardView>
+</RelativeLayout>

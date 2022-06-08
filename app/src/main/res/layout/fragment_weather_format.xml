@@ -72,7 +72,6 @@
                     android:button="@null"
                     android:background="@drawable/bg_radio"
                     android:textColor="@color/white"
-
                     android:theme="@style/Custom.RadioText"
                     android:gravity="center_horizontal" />
 

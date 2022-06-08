@@ -10,6 +10,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,16 +25,16 @@
                 android:src="@drawable/menuicon" />
 
             <LinearLayout
-                android:orientation="vertical"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:layout_width="360dp"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
 
                 <RelativeLayout
-                    android:background="@drawable/top_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp">
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/top_bg">
 
                     <ImageView
                         android:layout_width="@dimen/_15sdp"
@@ -57,26 +58,26 @@
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:background="@color/white"
                     android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
 
-                    android:layout_height="@dimen/_40sdp">
+                    android:background="@color/white">
 
                     <ImageView
-                        android:layout_gravity="center"
                         android:id="@+id/arrowicon"
                         android:layout_width="@dimen/_15sdp"
                         android:layout_height="@dimen/_15sdp"
                         android:layout_centerVertical="true"
+                        android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:src="@drawable/ic_vector__14_"
                         app:tint="#000000" />
 
                     <TextView
-                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
+                        android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_toRightOf="@id/arrowicon"
                         android:fontFamily="@font/poppins_400"
@@ -87,24 +88,24 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/findlocation_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp">
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/findlocation_bg">
 
                     <ImageView
-                        android:layout_gravity="center"
-
                         android:layout_width="@dimen/_15sdp"
+
                         android:layout_height="@dimen/_15sdp"
+                        android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:src="@drawable/ic_vector__14_"
                         app:tint="#000000" />
 
                     <TextView
-                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
+                        android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:fontFamily="@font/poppins_400"
                         android:text="Bashundhora, Dhaka"
@@ -116,14 +117,13 @@
             </LinearLayout>
 
 
-
             <!--Find by location weather view-->
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_20sdp"
                 android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:gravity="center">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layoutFirst"
@@ -145,11 +145,11 @@
                         android:layout_marginStart="@dimen/_16sdp"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:fontFamily="@font/poppins_500"
+                        android:text="@string/_18"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_30ssp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:text="@string/_18" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <TextView
@@ -185,11 +185,11 @@
                         android:layout_marginBottom="@dimen/_6sdp"
                         android:fontFamily="@font/poppins_500"
 
+                        android:text="Thunderstrom"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12ssp"
                         app:layout_constraintStart_toStartOf="@id/temperature"
-                        app:layout_constraintTop_toBottomOf="@+id/temperature"
-                        android:text="Thunderstrom" />
+                        app:layout_constraintTop_toBottomOf="@+id/temperature" />
 
 
                     <ImageView
@@ -220,11 +220,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_4sdp"
                         android:fontFamily="@font/poppins_500"
+                        android:text="Nikunja 2 Dhaka"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_8ssp"
                         app:layout_constraintBottom_toBottomOf="@id/imageLocation"
-                        app:layout_constraintStart_toEndOf="@id/imageLocation"
-                        android:text="Nikunja 2 Dhaka" />
+                        app:layout_constraintStart_toEndOf="@id/imageLocation" />
 
 
                     <TextView
@@ -232,18 +232,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_4sdp"
-                        android:layout_marginEnd="@dimen/_2sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
                         android:fontFamily="@font/poppins_400"
+                        android:text="last Updated : 10:25 PM"
                         android:textColor="@color/white"
+
                         android:textSize="@dimen/_8ssp"
                         app:layout_constraintBottom_toBottomOf="@id/btnRefresh"
-                        app:layout_constraintEnd_toStartOf="@id/btnRefresh"
-                        android:text="last Updated : 10:25 PM" />
+                        app:layout_constraintEnd_toStartOf="@id/btnRefresh" />
 
                     <ImageView
                         android:id="@+id/btnRefresh"
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_16sdp"
                         android:layout_marginBottom="@dimen/_16sdp"
                         android:src="@drawable/refreshbtn"
@@ -258,13 +259,12 @@
             </LinearLayout>
 
 
-
             <LinearLayout
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:id="@+id/constraintLayout"
                     android:layout_width="360dp"
                     android:layout_height="@dimen/_90sdp"
@@ -278,22 +278,19 @@
                         android:id="@+id/sunriseImage"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/_16sdp"
-                        android:src="@drawable/ic_sunrise"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:src="@drawable/ic_sunrise" />
 
 
                     <LinearLayout
                         android:id="@+id/layoutSunrise"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_8sdp"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/sunriseImage"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_toRightOf="@id/sunriseImage"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/sunrise"
@@ -316,25 +313,24 @@
 
 
                     <ImageView
+
                         android:id="@+id/sunsetImage"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
-                        android:layout_marginEnd="@dimen/_8sdp"
-                        android:src="@drawable/ic_sunset"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/layoutSunset"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:src="@drawable/ic_sunset" />
 
 
                     <LinearLayout
                         android:id="@+id/layoutSunset"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_16sdp"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_toLeftOf="@id/sunsetImage"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/sunset"
@@ -355,16 +351,16 @@
                             android:textSize="@dimen/_10ssp" />
                     </LinearLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
 
             </LinearLayout>
 
 
             <RelativeLayout
-                android:layout_marginRight="@dimen/_16sdp"
-                android:layout_marginLeft="@dimen/_16sdp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginRight="@dimen/_16sdp">
 
                 <TextView
                     android:id="@+id/todaybtn"
@@ -374,59 +370,49 @@
                     android:text="Today"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp" />
+
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:layout_toRightOf="@id/todaybtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tomorrow"
-                    android:textSize="@dimen/_10sdp"
-                    android:textColor="@color/white"
                     android:fontFamily="@font/poppins_400"
-                    />
+                    android:text="Tomorrow"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp" />
 
                 <TextView
-                    android:layout_toLeftOf="@id/nextarrow"
-                    android:textColor="@color/white"
-                    android:layout_marginRight="@dimen/_5sdp"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/poppins_400"
                     android:layout_width="wrap_content"
-                    android:textSize="@dimen/_10sdp"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_toLeftOf="@id/nextarrow"
+                    android:fontFamily="@font/poppins_400"
                     android:text="7 Days"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp" />
 
                 <ImageView
                     android:id="@+id/nextarrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_vector__11_"
                     android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
-                    />
-
-
+                    android:src="@drawable/ic_vector__11_" />
 
 
             </RelativeLayout>
-
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_weather"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="10"/>
-
-
-
-
-
+                tools:itemCount="10"
+                tools:listitem="@layout/item_weather" />
 
 
         </LinearLayout>

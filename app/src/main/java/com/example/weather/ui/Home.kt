@@ -14,13 +14,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.Adapter.AdapterWeather
 import com.example.weather.Adapter.NewsAdapter
+import com.example.weather.Adapter.TabLayoutAdapter
+import com.example.weather.MainActivity
 import com.example.weather.R
 import com.example.weather.databinding.FragmentHomeBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 
-class Home : Fragment() {
+class Home : Fragment(){
 
-    private var _binding:FragmentHomeBinding?=null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,90 +34,137 @@ class Home : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       _binding= FragmentHomeBinding.inflate(inflater,container,false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        handleBtnClick()
+        setTabLayout()
         RecyclerViewHandle()
-        controlNavigationDrawer()
 
-    }
-
-    private fun controlNavigationDrawer() {
-
-        binding.btnDrawer.setOnClickListener {
-            if (binding.drawerLayout.isDrawerOpen(Gravity.LEFT)) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            } else {
-                binding.drawerLayout.openDrawer(GravityCompat.START)
-            }
-        }
-
-        binding.btnSearchByDate.setOnClickListener {
-        binding.drawerLayout.closeDrawer(GravityCompat.START)
-        findNavController().navigate(R.id.action_home_to_searchByDate)
-        }
-
-        binding.btnWeatherFormat.setOnClickListener{
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_weatherFormat)
+        binding.btnDrawer.setOnClickListener{
 
         }
-
         binding.btnCurrentWeather.setOnClickListener {
-        var isdetailsweatheropen=false
-        isdetailsweatheropen=!isdetailsweatheropen
+            var isdetailsweatheropen=false
+            isdetailsweatheropen=!isdetailsweatheropen
             binding.detailsCurrentWeather.isVisible=isdetailsweatheropen
         }
 
-        binding.btnAboutUs.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_aboutUs)
-        }
-        binding.btnSearchByLocation.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_findByLocation)
-
-        }
-        binding.btnFindMyLocation.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_findMyLocation)
-        }
-        binding.btnTermsCondition.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_teamsCondition)
-        }
-
-        binding.btnFindMyLocation.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_findMyLocation)
-
-        }
-
-        binding.btnSubscription.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController().navigate(R.id.action_home_to_upgradeToPremium)
-        }
 
 
     }
 
+    private fun handleBtnClick() {
+
+
+        binding.btnDrawer.setOnClickListener {
+
+        }
+
+    }
+
+
+    /*  private fun controlNavigationDrawer() {
+
+          binding.btnDrawer.setOnClickListener {
+              if (binding.drawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                  binding.drawerLayout.closeDrawer(GravityCompat.START)
+              } else {
+                  binding.drawerLayout.openDrawer(GravityCompat.START)
+              }
+          }
+
+          binding.btnSearchByDate.setOnClickListener {
+          binding.drawerLayout.closeDrawer(GravityCompat.START)
+          findNavController().navigate(R.id.action_home_to_searchByDate)
+          }
+
+          binding.btnWeatherFormat.setOnClickListener{
+              binding.drawerLayout.closeDrawer(GravityCompat.START)
+              findNavController().navigate(R.id.action_home_to_weatherFormat)
+
+          }
+
+          binding.btnCurrentWeather.setOnClickListener {
+          var isdetailsweatheropen=false
+          isdetailsweatheropen=!isdetailsweatheropen
+              binding.detailsCurrentWeather.isVisible=isdetailsweatheropen
+          }
+
+          binding.btnAboutUs.setOnClickListener {
+              binding.drawerLayout.closeDrawer(GravityCompat.START)
+              findNavController().navigate(R.id.action_home_to_aboutUs)
+          }
+          binding.btnSearchByLocation.setOnClickListener {
+              binding.drawerLayout.closeDrawer(GravityCompat.START)
+              findNavController().navigate(R.id.action_home_to_findByLocation)
+
+          }
+          binding.btnFindMyLocation.setOnClickListener {
+              binding.drawerLayout.closeDrawer(GravityCompat.START)
+              findNavController().navigate(R.id.action_home_to_findMyLocation)
+          }
+          binding.btnTermsCondition.setOnClickListener {
+              binding.drawerLayout.closeDrawer(GravityCompat.START)
+              findNavController().navigate(R.id.action_home_to_teamsCondition)
+          }
+
+          binding.btnFindMyLocation.setOnClickListener {
+              binding.drawerLayout.closeDrawer(GravityCompat.START)
+              findNavController().navigate(R.id.action_home_to_findMyLocation)
+
+          }
+
+          binding.btnSubscription.setOnClickListener {
+              binding.drawerLayout.closeDrawer(GravityCompat.START)
+              findNavController().navigate(R.id.action_home_to_upgradeToPremium)
+          }
+
+
+      }*/
+
     private fun RecyclerViewHandle() {
 
-        val weatherAdapter=AdapterWeather()
-        binding.recyclerview.adapter=weatherAdapter
+        val weatherAdapter = AdapterWeather()
+        binding.recyclerview.adapter = weatherAdapter
 
-        val newsAdapter=NewsAdapter()
-        binding.newsRecycler.adapter=newsAdapter
+        val newsAdapter = NewsAdapter()
+        binding.newsRecycler.adapter = newsAdapter
+
+    }
+
+
+    private fun setTabLayout() {
+
+        val tabAdapter = TabLayoutAdapter(childFragmentManager, lifecycle)
+        binding.viewPager2.adapter = tabAdapter
+        TabLayoutMediator(
+            binding.tabLayout, binding.viewPager2
+        ) { tab, position ->
+
+            when (position) {
+                0 -> {
+                    tab.text = resources.getString(R.string.today)
+                }
+                1 -> {
+                    tab.text = resources.getString(R.string.tomorrow)
+                }
+                2 -> {
+                    tab.text = resources.getString(R.string.after_tomorrow)
+                }
+            }
+
+        }.attach()
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null
+        _binding = null
     }
 
 }

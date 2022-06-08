@@ -1,570 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout android:orientation="vertical"
+<RelativeLayout android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:id="@+id/drawerLayout"
     tools:context=".ui.Home"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-        <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/_10sdp"
-        android:layout_margin="@dimen/_5sdp"
-        android:background="@drawable/gradientbg"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp">
-
-            <ImageView
-                android:id="@+id/btnDrawer"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:src="@drawable/menuicon" />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center">
-
-
-                <ImageView
-                    android:layout_width="@dimen/_12sdp"
-                    android:layout_height="@dimen/_12sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:src="@drawable/locationicon"
-
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_500"
-                    android:text="Nikunja 2"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_13sdp"
-
-                    />
-            </LinearLayout>
-
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_300"
-                android:text="Last Updated : "
-                android:textColor="#BFFFFFFF"
-
-                android:textSize="@dimen/_10sdp" />
-
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10:10 PM"
-                android:textColor="#BFFFFFFF"
-                android:textSize="@dimen/_10sdp" />
-
-            <ImageView
-                android:id="@+id/refresh_btn"
-                android:layout_width="@dimen/_11sdp"
-                android:layout_height="@dimen/_11sdp"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:src="@drawable/refreshbtn" />
-
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/weather"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
-            />
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_80sdp">
-            <TextView
-
-                android:id="@+id/degreebtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/_18"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_60sdp"
-                android:fontFamily="@font/poppins_500"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="°"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:textSize="@dimen/_20sdp"
-                android:fontFamily="@font/poppins_400"
-                android:textColor="@color/white"
-
-                />
-
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/weathertxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_500"
-                android:text="@string/thunderstrom"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sunday,20 April"
-                android:textColor="#BFFFFFFF"
-                android:fontFamily="@font/poppins_500"
-                android:textSize="@dimen/_11sdp"
-                android:layout_below="@id/weathertxt"
-                android:layout_centerInParent="true"
-                />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#BFFFFFFF"
-            />
-
-
-        <LinearLayout
-            android:weightSum="3"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-          <LinearLayout
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:gravity="center"
-              android:layout_gravity="center"
-              android:orientation="vertical"
-              android:layout_weight="1">
-              <ImageView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:src="@drawable/windicon"
-                  />
-
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="@dimen/_4sdp"
-                  android:fontFamily="@font/poppins_500"
-                  android:text="13km/h"
-                  android:textColor="@color/white"
-                  android:textSize="@dimen/_12sdp" />
-
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Wind"
-                  android:textColor="#BFFFFFFF"
-                  android:fontFamily="@font/poppins_400"
-                  android:textSize="@dimen/_10sdp"
-
-                  />
-
-          </LinearLayout>
-
-
-          <LinearLayout
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:gravity="center"
-              android:layout_gravity="center"
-              android:orientation="vertical"
-              android:layout_weight="1">
-              <ImageView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:src="@drawable/humidityicon"
-                  />
-
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/_34"
-                  android:textColor="@color/white"
-                  android:fontFamily="@font/poppins_500"
-                  android:textSize="@dimen/_12sdp"
-                  android:layout_marginTop="@dimen/_4sdp"
-                  />
-
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/humidity"
-                  android:textColor="#BFFFFFFF"
-                  android:fontFamily="@font/poppins_400"
-                  android:textSize="@dimen/_10sdp"
-
-                  />
-
-          </LinearLayout>
-
-
-          <LinearLayout
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:gravity="center"
-              android:layout_gravity="center"
-              android:orientation="vertical"
-              android:layout_weight="1">
-              <ImageView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:src="@drawable/changeofrainicon"
-                  />
-
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="13km/h"
-                  android:textColor="@color/white"
-                  android:fontFamily="@font/poppins_500"
-                  android:textSize="@dimen/_12sdp"
-                  android:layout_marginTop="@dimen/_4sdp"
-                  />
-
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/change_of_rain"
-                  android:textColor="#BFFFFFFF"
-                  android:fontFamily="@font/poppins_400"
-                  android:textSize="@dimen/_10sdp"
-
-                  />
-
-          </LinearLayout>
-
-
-
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_20sdp"
-        android:layout_marginTop="-25dp"
-        android:background="@drawable/radiusbg"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-
-        />
-
-    <RelativeLayout
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/todaybtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_600"
-            android:text="Today"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp" />
-        <TextView
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_toRightOf="@id/todaybtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tomorrow"
-            android:textSize="@dimen/_10sdp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/poppins_400"
-            />
-
-        <TextView
-            android:layout_toLeftOf="@id/nextarrow"
-            android:textColor="@color/white"
-            android:layout_marginRight="@dimen/_5sdp"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/poppins_400"
-            android:layout_width="wrap_content"
-            android:textSize="@dimen/_10sdp"
-            android:layout_height="wrap_content"
-            android:text="7 Days"
-            />
-
-        <ImageView
-            android:id="@+id/nextarrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_vector__11_"
-            android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
-            />
-
-
-
-
-    </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_weather"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="10"/>
-
-        <LinearLayout
-            android:id="@+id/btnCurrentWeather"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Details About Current Weather "
-                android:fontFamily="@font/poppins_600"
-                android:textSize="@dimen/_12sdp"
-                android:textColor="@color/white"
-                />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/downicon"
-                android:layout_gravity="center"
-                />
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:visibility="gone"
-            android:orientation="vertical"
-            android:id="@+id/detailsCurrentWeather"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_width="match_parent"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_300"
-                    android:text="@string/current_temperature"
-                    android:textColor="#BFFFFFFF"
-                    android:textSize="@dimen/_10sdp" />
-                <TextView
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="18° C"
-                    android:textColor="#BFFFFFFF"
-                    android:fontFamily="@font/poppins_300"
-                    android:textSize="@dimen/_10sdp"
-                    />
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_300"
-                    android:text="@string/current_temperature"
-                    android:textColor="#BFFFFFFF"
-                    android:textSize="@dimen/_10sdp" />
-                <TextView
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="18° C"
-                    android:textColor="#BFFFFFFF"
-                    android:fontFamily="@font/poppins_300"
-                    android:textSize="@dimen/_10sdp"
-                    />
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/current_temperature"
-                    android:textColor="#BFFFFFFF"
-                    android:fontFamily="@font/poppins_300"
-                    android:textSize="@dimen/_10sdp"
-                    />
-                <TextView
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="18° C"
-                    android:textColor="#BFFFFFFF"
-                    android:fontFamily="@font/poppins_300"
-                    android:textSize="@dimen/_10sdp"
-                    />
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/current_temperature"
-                    android:textColor="#BFFFFFFF"
-                    android:fontFamily="@font/poppins_300"
-                    android:textSize="@dimen/_10sdp"
-                    />
-                <TextView
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="18° C"
-                    android:textColor="#BFFFFFFF"
-                    android:fontFamily="@font/poppins_300"
-                    android:textSize="@dimen/_10sdp"
-                    />
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/current_temperature"
-                    android:textColor="#BFFFFFFF"
-                    android:fontFamily="@font/poppins_300"
-                    android:textSize="@dimen/_10sdp"
-                    />
-                <TextView
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="18° C"
-                    android:textColor="#BFFFFFFF"
-                    android:fontFamily="@font/poppins_300"
-                    android:textSize="@dimen/_10sdp"
-                    />
-
-            </RelativeLayout>
-
-
-        </LinearLayout>
-
-
-
-
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Weather News"
-            android:fontFamily="@font/poppins_600"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@color/white"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/newsRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_news"
-            android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/_15sdp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
-
-
-
-
-
-</LinearLayout>
-
-</androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/navyblue"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -574,294 +20,529 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/gradientbg"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_10sdp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp">
+
+                    <ImageView
+                        android:id="@+id/btnDrawer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:src="@drawable/menuicon" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center">
+
+
+                        <ImageView
+                            android:layout_width="@dimen/_12sdp"
+                            android:layout_height="@dimen/_12sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:src="@drawable/locationicon"
+
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_500"
+                            android:text="Nikunja 2"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_13sdp"
+
+                            />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="Last Updated : "
+                        android:textColor="#BFFFFFFF"
+
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:10 PM"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageView
+                        android:id="@+id/refresh_btn"
+                        android:layout_width="@dimen/_11sdp"
+                        android:layout_height="@dimen/_11sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:src="@drawable/refreshbtn" />
+
+
+                </LinearLayout>
 
                 <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:padding="@dimen/_4sdp"
-                    android:src="@drawable/ic_sunrise" />
-
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_600"
-                    android:text="Weather Update"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12ssp" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:src="@drawable/weather" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+
+                        android:id="@+id/degreebtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_500"
+                        android:text="@string/_18"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_60sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:fontFamily="@font/poppins_400"
+                        android:text="°"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_20sdp"
+
+                        />
 
 
-            </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/weathertxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_500"
+                        android:text="@string/thunderstrom"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/weathertxt"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/poppins_500"
+                        android:text="Sunday,20 April"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_11sdp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="#BFFFFFFF" />
 
 
-            <LinearLayout
-                android:id="@+id/btnSubscription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_32sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_25sdp"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:src="@drawable/ic_subscription"
-                     />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="Upgrade To Premium"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_11ssp" />
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/windicon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/poppins_500"
+                            android:text="13km/h"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_400"
+                            android:text="Wind"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp"
+
+                            />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/humidityicon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/poppins_500"
+                            android:text="@string/_34"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_400"
+                            android:text="@string/humidity"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp"
+
+                            />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/changeofrainicon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/poppins_500"
+                            android:text="13km/h"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_400"
+                            android:text="@string/change_of_rain"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
 
             </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/btnLoginLogout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_25sdp"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:src="@drawable/ic_logout" />
-
-                <TextView
-                    android:id="@+id/loginOrLogoutText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="@string/login"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_11ssp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/btnFindMyLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_25sdp"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:padding="@dimen/_4sdp"
-                    android:src="@drawable/ic_my_location" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="@string/find_my_location"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_11ssp" />
-
-            </LinearLayout>
-
-
-             <LinearLayout
-                 android:id="@+id/btnSearchByDate"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="@dimen/_16sdp"
-                 android:gravity="center_vertical"
-                 android:orientation="horizontal">
-
-
-                 <ImageView
-                     android:layout_width="@dimen/_25sdp"
-                     android:layout_height="@dimen/_25sdp"
-                     android:layout_marginStart="@dimen/_16sdp"
-                     android:padding="@dimen/_5sdp"
-                     android:src="@drawable/ic_calender" />
-
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginStart="@dimen/_8sdp"
-                     android:fontFamily="@font/poppins_400"
-                     android:text="@string/search_by_date"
-                     android:textColor="@color/white"
-                     android:textSize="@dimen/_11ssp" />
-
-             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/btnSearchByLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_25sdp"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:padding="@dimen/_4sdp"
-                    android:src="@drawable/ic_location"
-                     />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="Find By Location"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_11ssp" />
-
-            </LinearLayout>
-
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:background="#3BFFFFFF"/>
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="-25dp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/radiusbg"
+
+                />
 
             <RelativeLayout
-                android:id="@+id/btnWeatherFormat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_16sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp">
 
-                 <TextView
-                    android:layout_width="wrap_content"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="@dimen/_250sdp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="@string/weather_format"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12ssp" />
+                    android:layout_toLeftOf="@+id/btnsevenday"
+                    android:background="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@color/white"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabMode="scrollable"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextAppearance="@style/Custom.TabText"
+                    app:tabTextColor="#B5FFFFFF" />
 
 
                 <TextView
-                    android:id="@+id/temperatureFormat"
+                    android:id="@+id/btnsevenday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_toLeftOf="@id/nextarrow"
+                    android:fontFamily="@font/poppins_400"
+                    android:text="7 Days"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp" />
+
+                <ImageView
+                    android:id="@+id/nextarrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="°C"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp" />
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_vector__11_" />
 
 
             </RelativeLayout>
-
-            <LinearLayout
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:background="@drawable/nav_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="10"
+                tools:listitem="@layout/item_weather" />
+
+            <LinearLayout
+                android:id="@+id/btnCurrentWeather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_600"
+                    android:text="Details About Current Weather "
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/downicon" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/detailsCurrentWeather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
                 android:orientation="vertical"
-                android:padding="@dimen/_16sdp">
+                android:visibility="gone">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <!-- <TextView
-                     android:id="@+id/btnHelp"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginStart="@dimen/_8sdp"
-                     android:fontFamily="@font/poppins_400"
-                     android:text="@string/help"
-                     android:textColor="@color/text_color"
-                     android:textSize="@dimen/_12ssp" />-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="@string/current_temperature"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
 
-                <TextView
-                    android:id="@+id/btnAboutUs"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="18° C"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="@string/about_us"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12ssp" />  <TextView
-                    android:id="@+id/btnTermsCondition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="Terms &amp; Conditions"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12ssp" />
+                    android:layout_marginTop="@dimen/_10sdp">
 
-                <TextView
-                    android:id="@+id/btnPrivacyPolicy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="Privacy Policy"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12ssp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="@string/current_temperature"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
 
-                <TextView
-                    android:id="@+id/btnRefundPolicy"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="18° C"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:fontFamily="@font/poppins_400"
-                    android:text="Refund Policy"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12ssp" />
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="@string/current_temperature"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="18° C"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="@string/current_temperature"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="18° C"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="@string/current_temperature"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_300"
+                        android:text="18° C"
+                        android:textColor="#BFFFFFFF"
+                        android:textSize="@dimen/_10sdp" />
+
+                </RelativeLayout>
+
 
             </LinearLayout>
 
 
             <TextView
-                android:id="@+id/btnVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_600"
+                android:text="Weather News"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/newsRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_28sdp"
-                android:fontFamily="@font/poppins_400"
-                android:text="@string/v_1_0_2"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12ssp" />
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_news" />
+
 
         </LinearLayout>
 
-    </com.google.android.material.navigation.NavigationView>
+    </androidx.core.widget.NestedScrollView>
 
 
-
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>
