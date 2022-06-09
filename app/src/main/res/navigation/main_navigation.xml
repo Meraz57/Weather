@@ -34,6 +34,12 @@
         <action
             android:id="@+id/action_home_to_login"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_home_to_newsViewFragment"
+            app:destination="@id/newsViewFragment" />
+        <action
+            android:id="@+id/action_home_to_sevenDaysWeatherInfo"
+            app:destination="@id/sevenDaysWeatherInfo" />
     </fragment>
     <fragment
         android:id="@+id/findByLocation"
@@ -84,4 +90,14 @@
         android:name="com.example.weather.ui.Login"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/newsViewFragment"
+        android:name="com.example.weather.ui.NewsViewFragment"
+        android:label="fragment_news_view"
+        tools:layout="@layout/fragment_news_view" />
+    <fragment
+        android:id="@+id/sevenDaysWeatherInfo"
+        android:name="com.example.weather.ui.SevenDaysWeatherInfo"
+        android:label="fragment_seven_days_weather_info"
+        tools:layout="@layout/fragment_seven_days_weather_info" />
 </navigation>

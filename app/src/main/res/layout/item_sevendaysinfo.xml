@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_50sdp"
+    android:paddingRight="@dimen/_16sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:paddingLeft="@dimen/_16sdp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mon"
+        android:textColor="#BFFFFFFF"
+        android:fontFamily="@font/poppins_500"
+        android:textSize="@dimen/_14sdp"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:id="@+id/centertxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppins_500"
+        android:text="Rainy"
+        android:textColor="#BFFFFFFF"
+        android:textSize="@dimen/_14sdp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="13dp"
+        android:layout_toLeftOf="@id/centertxt"
+        android:src="@drawable/weatheritemicon" />
+
+    <TextView
+        android:id="@+id/endtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/poppins_500"
+        android:text="+14°"
+        android:textColor="#BFFFFFFF"
+        android:textSize="@dimen/_14sdp" />
+
+    <TextView
+        android:layout_toLeftOf="@id/endtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/poppins_500"
+        android:text="+17°"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_14sdp" />
+
+
+
+
+
+</RelativeLayout>

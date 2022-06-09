@@ -96,7 +96,6 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-
                 <ImageView
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="@dimen/_25sdp"
@@ -110,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:fontFamily="@font/poppins_400"
-                    android:text="@string/login"
+                    android:text="Logout"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_11ssp" />
 

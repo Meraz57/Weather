@@ -1,17 +1,18 @@
 package com.example.weather.ui
 
+import android.graphics.Color
 import android.os.Bundle
-import android.view.Gravity
+import android.text.Layout
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.core.view.GravityCompat
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.Adapter.AdapterWeather
 import com.example.weather.Adapter.NewsAdapter
 import com.example.weather.Adapter.TabLayoutAdapter
@@ -61,10 +62,9 @@ class Home : Fragment(){
     private fun handleBtnClick() {
 
 
-        binding.btnDrawer.setOnClickListener {
-
-        }
-
+       binding.btnsevenday.setOnClickListener {
+           findNavController().navigate(R.id.sevenDaysWeatherInfo)
+       }
     }
 
 
@@ -130,10 +130,21 @@ class Home : Fragment(){
     private fun RecyclerViewHandle() {
 
         val weatherAdapter = AdapterWeather()
-        binding.recyclerview.adapter = weatherAdapter
+        binding.recyclerview.apply {
+            adapter=weatherAdapter
+            layoutManager=LinearLayoutManager(requireContext())
+        }
+
 
         val newsAdapter = NewsAdapter()
         binding.newsRecycler.adapter = newsAdapter
+        newsAdapter.onItemClickListener(object :NewsAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                findNavController().navigate(R.id.newsViewFragment)
+
+            }
+
+        })
 
     }
 
@@ -152,9 +163,6 @@ class Home : Fragment(){
                 }
                 1 -> {
                     tab.text = resources.getString(R.string.tomorrow)
-                }
-                2 -> {
-                    tab.text = resources.getString(R.string.after_tomorrow)
                 }
             }
 

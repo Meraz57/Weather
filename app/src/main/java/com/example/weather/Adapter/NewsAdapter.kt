@@ -7,8 +7,23 @@ import com.example.weather.databinding.ItemNewsBinding
 
 class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
-    class NewsViewHolder(val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
+    private lateinit var mlistener:onItemClickListener
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
 
+    fun onItemClickListener(listener:onItemClickListener){
+    mlistener=listener
+
+    }
+
+    class NewsViewHolder(val binding: ItemNewsBinding,listener: onItemClickListener) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+        itemView.setOnClickListener {
+            listener.onItemClick(adapterPosition)
+        }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -18,14 +33,16 @@ class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),mlistener
         )
 
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
 
+
     }
+
 
     override fun getItemCount(): Int {
         return 10

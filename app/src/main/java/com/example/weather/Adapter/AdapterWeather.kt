@@ -1,14 +1,23 @@
 package com.example.weather.Adapter
-
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
+
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.weather.R
 import com.example.weather.databinding.ItemWeatherBinding
 
 class AdapterWeather() : RecyclerView.Adapter<AdapterWeather.WeatherViewholder>() {
+   private var selectedposition=0
 
+    class WeatherViewholder(val binding: ItemWeatherBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewholder {
         return WeatherViewholder(
@@ -22,18 +31,23 @@ class AdapterWeather() : RecyclerView.Adapter<AdapterWeather.WeatherViewholder>(
     }
 
     override fun onBindViewHolder(holder: WeatherViewholder, position: Int) {
+        if (selectedposition==holder.adapterPosition){
+        holder.binding.layout.background=ColorDrawable(R.drawable.weather_bg)
+        }else{
+            holder.binding.layout.background=ColorDrawable(R.drawable.weather_bg2)
+        }
 
+        holder.itemView.setOnClickListener {
+            selectedposition=holder.adapterPosition
+             notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int {
         return 10
     }
 
-    class WeatherViewholder(val binding: ItemWeatherBinding) :
-        RecyclerView.ViewHolder(binding.root) {
 
-
-    }
 
 }
 
