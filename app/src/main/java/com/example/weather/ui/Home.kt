@@ -3,6 +3,7 @@ package com.example.weather.ui
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Layout
+import android.view.Gravity
 
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,9 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.Adapter.AdapterWeather
 import com.example.weather.Adapter.NewsAdapter
 import com.example.weather.Adapter.TabLayoutAdapter
@@ -45,8 +49,13 @@ class Home : Fragment(){
         handleBtnClick()
         setTabLayout()
         RecyclerViewHandle()
-
+        val drawerMenu=requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
         binding.btnDrawer.setOnClickListener{
+        if (drawerMenu.isDrawerOpen(Gravity.LEFT)){
+            drawerMenu.closeDrawer(GravityCompat.START)
+        }else{
+            drawerMenu.openDrawer(GravityCompat.START)
+        }
 
         }
         binding.btnCurrentWeather.setOnClickListener {
@@ -68,71 +77,13 @@ class Home : Fragment(){
     }
 
 
-    /*  private fun controlNavigationDrawer() {
-
-          binding.btnDrawer.setOnClickListener {
-              if (binding.drawerLayout.isDrawerOpen(Gravity.LEFT)) {
-                  binding.drawerLayout.closeDrawer(GravityCompat.START)
-              } else {
-                  binding.drawerLayout.openDrawer(GravityCompat.START)
-              }
-          }
-
-          binding.btnSearchByDate.setOnClickListener {
-          binding.drawerLayout.closeDrawer(GravityCompat.START)
-          findNavController().navigate(R.id.action_home_to_searchByDate)
-          }
-
-          binding.btnWeatherFormat.setOnClickListener{
-              binding.drawerLayout.closeDrawer(GravityCompat.START)
-              findNavController().navigate(R.id.action_home_to_weatherFormat)
-
-          }
-
-          binding.btnCurrentWeather.setOnClickListener {
-          var isdetailsweatheropen=false
-          isdetailsweatheropen=!isdetailsweatheropen
-              binding.detailsCurrentWeather.isVisible=isdetailsweatheropen
-          }
-
-          binding.btnAboutUs.setOnClickListener {
-              binding.drawerLayout.closeDrawer(GravityCompat.START)
-              findNavController().navigate(R.id.action_home_to_aboutUs)
-          }
-          binding.btnSearchByLocation.setOnClickListener {
-              binding.drawerLayout.closeDrawer(GravityCompat.START)
-              findNavController().navigate(R.id.action_home_to_findByLocation)
-
-          }
-          binding.btnFindMyLocation.setOnClickListener {
-              binding.drawerLayout.closeDrawer(GravityCompat.START)
-              findNavController().navigate(R.id.action_home_to_findMyLocation)
-          }
-          binding.btnTermsCondition.setOnClickListener {
-              binding.drawerLayout.closeDrawer(GravityCompat.START)
-              findNavController().navigate(R.id.action_home_to_teamsCondition)
-          }
-
-          binding.btnFindMyLocation.setOnClickListener {
-              binding.drawerLayout.closeDrawer(GravityCompat.START)
-              findNavController().navigate(R.id.action_home_to_findMyLocation)
-
-          }
-
-          binding.btnSubscription.setOnClickListener {
-              binding.drawerLayout.closeDrawer(GravityCompat.START)
-              findNavController().navigate(R.id.action_home_to_upgradeToPremium)
-          }
-
-
-      }*/
 
     private fun RecyclerViewHandle() {
 
         val weatherAdapter = AdapterWeather()
         binding.recyclerview.apply {
             adapter=weatherAdapter
-            layoutManager=LinearLayoutManager(requireContext())
+            layoutManager=LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
         }
 
 

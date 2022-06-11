@@ -9,9 +9,8 @@
     tools:context=".ui.NewsViewFragment">
 
 
-
-
     <RelativeLayout
+        android:layout_marginTop="@dimen/_16sdp"
         android:id="@+id/topsection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -34,9 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_500"
+            android:text="Strom to Hit On Bay Of Bengal"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:text="Strom to Hit On Bay Of Bengal" />
+            android:textSize="@dimen/_12ssp" />
 
     </RelativeLayout>
 
@@ -55,9 +54,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_170sdp"
                 android:src="@drawable/dummy_news"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:scaleType="fitXY"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:layout_marginLeft="@dimen/_16sdp"
+                />
 
             <TextView
                 android:id="@+id/tittle_description"

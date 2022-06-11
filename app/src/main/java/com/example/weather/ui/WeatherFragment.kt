@@ -10,10 +10,14 @@ import com.example.weather.databinding.FragmentWeatherBinding
 import com.example.weather.databinding.FragmentWeatherFormatBinding
 
 class WeatherFragment : Fragment() {
+    private var param1: String? = null
     private var _binding :FragmentWeatherBinding?=null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+        }
     }
 
     override fun onCreateView(
@@ -36,5 +40,21 @@ class WeatherFragment : Fragment() {
         private const val TAG = "WeatherFragment"
         private const val ARG_PARAM1 = "param1"
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
+
+            }
 
 }

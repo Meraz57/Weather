@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
 import com.example.weather.Adapter.AdapterWeather
 import com.example.weather.R
@@ -36,8 +37,16 @@ class SearchByDate : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val drawerLayout=requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
         handleSelectDate()
         handleWeatherAdapter()
+        binding.btnDrawer.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(Gravity.LEFT)){
+                drawerLayout.closeDrawer(GravityCompat.START)
+            }else{
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
 
     }
 
@@ -56,13 +65,13 @@ class SearchByDate : Fragment() {
             datePicker.show(requireActivity().supportFragmentManager, "tag")
         }
 
-        datePicker.addOnPositiveButtonClickListener {
+        datePicker.addOnPositiveButtonClickListener{
             binding.date.text = datePicker.headerText
             Log.d(TAG, "handleSelectDate: $it")
         }
-
-
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

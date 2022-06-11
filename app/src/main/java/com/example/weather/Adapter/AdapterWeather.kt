@@ -1,6 +1,5 @@
 package com.example.weather.Adapter
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
@@ -31,16 +30,16 @@ class AdapterWeather() : RecyclerView.Adapter<AdapterWeather.WeatherViewholder>(
     }
 
     override fun onBindViewHolder(holder: WeatherViewholder, position: Int) {
-        if (selectedposition==holder.adapterPosition){
-        holder.binding.layout.background=ColorDrawable(R.drawable.weather_bg)
-        }else{
-            holder.binding.layout.background=ColorDrawable(R.drawable.weather_bg2)
-        }
-
-        holder.itemView.setOnClickListener {
-            selectedposition=holder.adapterPosition
-             notifyDataSetChanged()
-        }
+//        if (selectedposition==holder.adapterPosition){
+//        holder.binding.layout.background=ColorDrawable(R.drawable.weather_bg)
+//        }else{
+//            holder.binding.layout.background=ColorDrawable(R.drawable.weather_bg2)
+//        }
+//
+//        holder.itemView.setOnClickListener {
+//            selectedposition=holder.adapterPosition
+//             notifyDataSetChanged()
+//        }
     }
 
     override fun getItemCount(): Int {

@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
+import com.example.weather.Adapter.AdapterWeather
 import com.example.weather.R
 import com.example.weather.databinding.FragmentFindByLocationBinding
 
@@ -32,12 +34,23 @@ private var _binding:FragmentFindByLocationBinding?=null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        handleRecyclerview()
         binding.btnsevenday.setOnClickListener {
             findNavController().navigate(R.id.sevenDaysWeatherInfo)
         }
+        val drawerLayout=requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
+        binding.btnDrawer.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(Gravity.LEFT)){
+                drawerLayout.closeDrawer(GravityCompat.START)
+            }else{
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
+    }
 
-
-
+    private fun handleRecyclerview(){
+        val adapter=AdapterWeather()
+        binding.recyclerview.adapter=adapter
     }
 
 }

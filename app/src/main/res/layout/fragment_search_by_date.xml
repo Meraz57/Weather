@@ -17,11 +17,11 @@
             android:id="@+id/btnDrawer"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
-            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
             android:src="@drawable/menuicon"
-            android:padding="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:tint="@color/white" />
+            android:layout_marginTop="@dimen/_16sdp"
+            />
 
         <RelativeLayout
 
