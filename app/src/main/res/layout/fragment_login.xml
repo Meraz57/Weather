@@ -61,32 +61,29 @@
 
         <LinearLayout
             android:id="@+id/btnFacebook"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_gravity="center"
-            android:background="@drawable/btn_bg"
-            android:gravity="center"
             android:layout_width="345dp"
-            android:layout_height="45dp">
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@drawable/btn_bg"
+            android:gravity="center">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginRight="@dimen/_15sdp"
-                android:src="@drawable/facebookicon"
-                />
+                android:src="@drawable/facebookicon" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login With Facebook"
                 android:fontFamily="@font/poppins_400"
-                android:textSize="@dimen/_10sdp"
+                android:text="Login With Facebook"
                 android:textColor="@color/white"
-                />
-
+                android:textSize="@dimen/_10sdp" />
 
 
         </LinearLayout>
-
 
 
     </LinearLayout>
