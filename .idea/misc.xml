@@ -45,6 +45,8 @@
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/item_sevendaysinfo.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/item_subcription_pakage.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/item_weather.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.29157759726378796" />
       </map>
     </option>
   </component>
