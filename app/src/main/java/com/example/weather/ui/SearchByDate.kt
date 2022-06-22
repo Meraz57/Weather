@@ -9,10 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
-import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.fragment.findNavController
-import com.example.weather.Adapter.AdapterWeather
+import com.example.weather.adapter.AdapterWeather
 import com.example.weather.R
 import com.example.weather.databinding.FragmentSearchByDateBinding
 import com.google.android.material.datepicker.MaterialDatePicker

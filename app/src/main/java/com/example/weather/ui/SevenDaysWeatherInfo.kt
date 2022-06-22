@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.weather.Adapter.SevendayInfoAdapter
+import com.example.weather.adapter.SevendayInfoAdapter
 import com.example.weather.R
 import com.example.weather.databinding.FragmentSevenDaysWeatherInfoBinding
 

@@ -72,4 +72,8 @@ dependencies {
 
 
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
+
+    //coil image loader
+    implementation("io.coil-kt:coil:1.4.0")
+    implementation("io.coil-kt:coil-gif:1.4.0")
 }

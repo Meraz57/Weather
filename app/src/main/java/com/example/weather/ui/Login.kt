@@ -104,10 +104,10 @@ class Login : Fragment() {
         val firebaseUser = auth.currentUser
         if (firebaseUser != null) {
             //user already loggedIn
-            Intent(context, MainActivity::class.java).apply {
-                startActivity(this)
-            }
-            requireActivity().finish()
+//            Intent(context, MainActivity::class.java).apply {
+//                startActivity(this)
+//            }
+//            requireActivity().finish()
 
         }
     }

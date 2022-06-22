@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
-import com.example.weather.Adapter.AdapterWeather
+import com.example.weather.adapter.AdapterWeather
 import com.example.weather.R
 import com.example.weather.databinding.FragmentFindByLocationBinding
 
