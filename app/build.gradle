@@ -76,4 +76,7 @@ dependencies {
     //coil image loader
     implementation("io.coil-kt:coil:1.4.0")
     implementation("io.coil-kt:coil-gif:1.4.0")
+
+    //okhttp logger
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.2"
 }

@@ -1,6 +1,8 @@
 package com.example.weather.ui
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +14,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.weather.adapter.AdapterWeather
 import com.example.weather.R
 import com.example.weather.databinding.FragmentFindMyLocationBinding
+import com.example.weather.dataclass.data.currentweather.CurrentWeather
+import com.example.weather.network.RetrofitOpenWeatherClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class FindMyLocation : Fragment() {
@@ -38,6 +45,9 @@ class FindMyLocation : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleRecyclerview()
         handleBtnClick()
+        handleWeather()
+
+
         val drawerLayout=requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
         binding.btnDrawer.setOnClickListener {
             if (drawerLayout.isDrawerOpen(Gravity.LEFT)){
@@ -49,7 +59,26 @@ class FindMyLocation : Fragment() {
 
     }
 
-   private fun handleRecyclerview(){
+    private fun handleWeather() {
+        val api=RetrofitOpenWeatherClient.apiInterfaceOW
+        api.weather("23","90","e13d7e0ca2e481d477ee300f03e94f3d").enqueue(object : Callback<CurrentWeather>{
+            override fun onResponse(
+                call: Call<CurrentWeather>,
+                response: Response<CurrentWeather>
+            ) {
+                if(response.isSuccessful){
+                    Log.d(TAG, "onResponse: ")
+                }
+            }
+
+            override fun onFailure(call: Call<CurrentWeather>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    private fun handleRecyclerview(){
         val weatherAdapter=AdapterWeather()
         binding.recyclerview.adapter=weatherAdapter
 

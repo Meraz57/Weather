@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.weather.databinding.ItemNewsBinding
-import com.example.weather.dataclass.Data
+import com.example.weather.dataclass.data.Data
 
-class NewsAdapter(val list: List<Data>) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
-
+class NewsAdapter(val list: List<Data?>?) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>()    {
     private lateinit var mlistener: onItemClickListener
 
     interface onItemClickListener {
@@ -43,17 +42,17 @@ class NewsAdapter(val list: List<Data>) : RecyclerView.Adapter<NewsAdapter.NewsV
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val item = list[position]
+        val item = list?.get(position)
         holder.binding.apply {
-            title.text = item.title
-            image.load(item.image)
+            title.text = item?.title
+            image.load(item?.image)
         }
 
     }
 
 
     override fun getItemCount(): Int {
-        return list.size
+        return list!!.size
     }
 
 }

@@ -18,8 +18,10 @@ import com.example.weather.adapter.AdapterWeather
 import com.example.weather.adapter.NewsAdapter
 import com.example.weather.adapter.TabLayoutAdapter
 import com.example.weather.databinding.FragmentHomeBinding
-import com.example.weather.dataclass.Data
+import com.example.weather.dataclass.data.ResponseNewsData
+import com.example.weather.dataclass.data.currentweather.CurrentWeather
 import com.example.weather.network.RetrofitClient
+import com.example.weather.network.RetrofitOpenWeatherClient
 import com.google.android.material.tabs.TabLayoutMediator
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,11 +46,9 @@ class Home : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleBtnClick()
         setTabLayout()
-
         newsPostRecyclerview()
         recyclerViewHandle()
-
-
+        currentWeatherData()
         val drawerMenu = requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
         binding.btnDrawer.setOnClickListener {
             if (drawerMenu.isDrawerOpen(Gravity.LEFT)) {
@@ -89,13 +89,16 @@ class Home : Fragment() {
     private fun newsPostRecyclerview() {
         val api = RetrofitClient.apiInterface
 
-        api.newsPost().enqueue(object : Callback<List<Data>> {
-            override fun onResponse(call: Call<List<Data>>, response: Response<List<Data>>) {
+        api.newsPost().enqueue(object : Callback<ResponseNewsData> {
+            override fun onResponse(
+                call: Call<ResponseNewsData>,
+                response: Response<ResponseNewsData>
+            ) {
 
                 if (response.isSuccessful) {
-                    Log.d("TAG", "onResponse:")
+                    Log.d("TAG", "onResponse:Success")
                     val news = response.body()
-                    val newsAdapter = NewsAdapter(news!!)
+                    val newsAdapter = NewsAdapter(news!!.data)
                     binding.newsRecycler.adapter = newsAdapter
                     newsAdapter.onItemClickListener(object : NewsAdapter.onItemClickListener {
                         override fun onItemClick(position: Int) {
@@ -110,7 +113,7 @@ class Home : Fragment() {
             }
 
 
-            override fun onFailure(call: Call<List<Data>>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseNewsData>, t: Throwable) {
                 Log.d("TAG", "onFailure: ${t.message}")
             }
 
@@ -137,6 +140,59 @@ class Home : Fragment() {
 
         }.attach()
 
+    }
+
+
+    private fun currentWeatherData() {
+
+        val api = RetrofitOpenWeatherClient.apiInterfaceOW
+        api.weather("23", "90", "e13d7e0ca2e481d477ee300f03e94f3d")
+            .enqueue(object : Callback<CurrentWeather> {
+                override fun onResponse(
+                    call: Call<CurrentWeather>,
+                    response: Response<CurrentWeather>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.d("TAG", "onResponseCurrentWeatherSuccess:")
+                        val data = response.body()!!
+                        val list = response.body()!!.weather?.get(0)
+
+
+                        binding.apply {
+                            temperature.text = data.main?.temp.toString()
+                            wind.text = data.wind?.speed.toString()
+                            humidity.text = data.main?.humidity.toString()
+                            currentplaceid.text = data.name
+                            changeofRain.text = data.wind?.gust.toString()
+                            time.text = data.timezone.toString()
+                            weathertxt.text = list?.description.toString()
+
+                            //start details about current weather
+                            binding.temperaturehome.text = data.main?.temp.toString()
+                            binding.feelsLike.text = data.main?.feels_like.toString()
+                            binding.uvIndex.text = data.wind?.speed.toString()
+                            binding.visivility.text = data.visibility.toString()
+                            binding.pressure.text = data.main?.pressure.toString()
+
+
+                        }
+
+                    } else {
+                        Log.d(
+                            "TAG",
+                            "onResponseCurrentWeather: ${
+                                response.errorBody()?.string()
+                            }  ${response.message()}"
+                        )
+
+                    }
+                }
+
+                override fun onFailure(call: Call<CurrentWeather>, t: Throwable) {
+                    Log.d("TAG", "onFailureCurrentWeather: ${t.message} ")
+                }
+
+            })
     }
 
     override fun onDestroy() {

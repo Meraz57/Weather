@@ -65,6 +65,7 @@
                         app:tint="#000000" />
 
                     <TextView
+                        android:id="@+id/location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -93,6 +94,7 @@
                         app:tint="#000000" />
 
                     <TextView
+                        android:id="@+id/location1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -299,6 +301,7 @@
                             android:text="06.30 AM"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_10ssp" />
+
                     </LinearLayout>
 
 

@@ -46,8 +46,10 @@
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/item_sevendaysinfo.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/item_subcription_pakage.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/Project X Limited/AndroidStudioProjects/Weather/app/src/main/res/layout/item_weather.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.29157759726378796" />
+        <entry key="app/src/main/res/layout/fragment_find_by_location.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4110898661567878" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_news_view.xml" value="0.12" />
         <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.29157759726378796" />
         <entry key="app/src/main/res/layout/item_news.xml" value="0.29157759726378796" />
         <entry key="app/src/main/res/layout/item_weather.xml" value="0.29157759726378796" />

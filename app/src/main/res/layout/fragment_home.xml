@@ -21,8 +21,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:elevation="1dp"
                 android:background="@drawable/gradientbg"
+                android:elevation="1dp"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/_10sdp">
 
@@ -37,7 +37,7 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:padding="@dimen/_5sdp"
-                        android:src="@drawable/menuicon"/>
+                        android:src="@drawable/menuicon" />
 
 
                     <LinearLayout
@@ -56,6 +56,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/currentplaceid"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_500"
@@ -117,7 +118,7 @@
 
                     <TextView
 
-                        android:id="@+id/degreebtn"
+                        android:id="@+id/temperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_500"
@@ -194,14 +195,37 @@
                             android:layout_height="wrap_content"
                             android:src="@drawable/windicon" />
 
-                        <TextView
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/_2sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_4sdp"
-                            android:fontFamily="@font/poppins_500"
-                            android:text="13km/h"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp" />
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/wind"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_500"
+                                android:text="13"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:fontFamily="@font/poppins_500"
+                                android:text="km/h"
+                                android:textColor="@color/white"
+
+                                />
+
+
+                        </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -230,6 +254,7 @@
                             android:src="@drawable/humidityicon" />
 
                         <TextView
+                            android:id="@+id/humidity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_4sdp"
@@ -264,14 +289,34 @@
                             android:layout_height="wrap_content"
                             android:src="@drawable/changeofrainicon" />
 
-                        <TextView
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/_2sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_4sdp"
-                            android:fontFamily="@font/poppins_500"
-                            android:text="13km/h"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp" />
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/changeofRain"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_500"
+                                android:text="13"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:fontFamily="@font/poppins_500"
+                                android:text="km/h"
+                                android:textColor="@color/white"
+                                />
+
+
+                        </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -362,11 +407,10 @@
                 android:id="@+id/viewPager2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tabLayout"
-                />
+                app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
@@ -424,14 +468,32 @@
                         android:textColor="#BFFFFFFF"
                         android:textSize="@dimen/_10sdp" />
 
-                    <TextView
+                    <LinearLayout
+                        android:layout_alignParentEnd="true"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                        android:id="@+id/temperaturehome"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
                         android:fontFamily="@font/poppins_300"
-                        android:text="18° C"
+                        android:text="18"
                         android:textColor="#BFFFFFFF"
                         android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:layout_marginLeft="@dimen/_2sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="°C"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                    </LinearLayout>
+
 
                 </RelativeLayout>
 
@@ -444,18 +506,38 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_300"
-                        android:text="@string/current_temperature"
+                        android:text="Feels Like"
                         android:textColor="#BFFFFFFF"
                         android:textSize="@dimen/_10sdp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
                         android:layout_alignParentEnd="true"
-                        android:fontFamily="@font/poppins_300"
-                        android:text="18° C"
-                        android:textColor="#BFFFFFFF"
-                        android:textSize="@dimen/_10sdp" />
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/feels_like"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_300"
+                            android:text="18"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:layout_marginLeft="@dimen/_2sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="°C"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                    </LinearLayout>
+
+
 
                 </RelativeLayout>
 
@@ -468,18 +550,38 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_300"
-                        android:text="@string/current_temperature"
+                        android:text="UV Index"
                         android:textColor="#BFFFFFFF"
                         android:textSize="@dimen/_10sdp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
                         android:layout_alignParentEnd="true"
-                        android:fontFamily="@font/poppins_300"
-                        android:text="18° C"
-                        android:textColor="#BFFFFFFF"
-                        android:textSize="@dimen/_10sdp" />
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/uvIndex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_300"
+                            android:text="18° C"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:layout_marginLeft="@dimen/_2sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="°C"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                    </LinearLayout>
+
+
+
 
                 </RelativeLayout>
 
@@ -492,18 +594,36 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_300"
-                        android:text="@string/current_temperature"
+                        android:text="Visibility"
                         android:textColor="#BFFFFFFF"
                         android:textSize="@dimen/_10sdp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
                         android:layout_alignParentEnd="true"
-                        android:fontFamily="@font/poppins_300"
-                        android:text="18° C"
-                        android:textColor="#BFFFFFFF"
-                        android:textSize="@dimen/_10sdp" />
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/visivility"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_300"
+                            android:text="18"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:layout_marginLeft="@dimen/_2sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mi"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                    </LinearLayout>
+
 
                 </RelativeLayout>
 
@@ -516,18 +636,37 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_300"
-                        android:text="@string/current_temperature"
+                        android:text="Pressure"
                         android:textColor="#BFFFFFFF"
                         android:textSize="@dimen/_10sdp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
                         android:layout_alignParentEnd="true"
-                        android:fontFamily="@font/poppins_300"
-                        android:text="18° C"
-                        android:textColor="#BFFFFFFF"
-                        android:textSize="@dimen/_10sdp" />
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pressure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_300"
+                            android:text="18° C"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:layout_marginLeft="@dimen/_2sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="InHg"
+                            android:textColor="#BFFFFFFF"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                    </LinearLayout>
+
 
                 </RelativeLayout>
 

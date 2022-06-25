@@ -1,4 +1,4 @@
-package com.example.weather.dataclass
+package com.example.weather.dataclass.data
 
 data class Data(
     val created_at: String?,
@@ -9,3 +9,4 @@ data class Data(
     val title: String?,
     val updated_at: String?
 )
+
