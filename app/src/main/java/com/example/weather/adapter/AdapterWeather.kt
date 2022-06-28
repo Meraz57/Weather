@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.R
 import com.example.weather.databinding.ItemWeatherBinding
+import com.example.weather.ui.AllFuction
+import com.example.weather.dataclass.data.todayForecast.Hourly
 
-class AdapterWeather() : RecyclerView.Adapter<AdapterWeather.WeatherViewholder>() {
+class AdapterWeather(val list: List<Hourly?>) : RecyclerView.Adapter<AdapterWeather.WeatherViewholder>() {
    private var selectedposition=0
 
     class WeatherViewholder(val binding: ItemWeatherBinding) :
@@ -44,10 +46,21 @@ class AdapterWeather() : RecyclerView.Adapter<AdapterWeather.WeatherViewholder>(
              notifyDataSetChanged()
         }
 
+
+        //Bind Data
+        val item= list[position]?.weather?.get(0)
+        val item1=list[position]
+        holder.binding.apply {
+            weatherFormat.text=item?.description
+            time.text= item1?.dt?.let { AllFuction.convertLongToTime(it.toLong()) }
+        }
+
+
+
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return list.size
     }
 
 

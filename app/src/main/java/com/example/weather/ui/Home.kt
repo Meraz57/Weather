@@ -1,5 +1,6 @@
 package com.example.weather.ui
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -26,13 +27,15 @@ import com.google.android.material.tabs.TabLayoutMediator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
 
 
 class Home : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
+    private val allfun = AllFuction
+    private val api = RetrofitOpenWeatherClient.apiInterfaceOW
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +52,8 @@ class Home : Fragment() {
         newsPostRecyclerview()
         recyclerViewHandle()
         currentWeatherData()
+
+
         val drawerMenu = requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
         binding.btnDrawer.setOnClickListener {
             if (drawerMenu.isDrawerOpen(Gravity.LEFT)) {
@@ -78,11 +83,35 @@ class Home : Fragment() {
 
     private fun recyclerViewHandle() {
 
-        val weatherAdapter = AdapterWeather()
-        binding.recyclerview.apply {
-            adapter = weatherAdapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        }
+        api.todayForecast(
+            "23",
+            "90",
+            "current,minutely,daily,alerts",
+            "e13d7e0ca2e481d477ee300f03e94f3d"
+        ).enqueue(object :Callback<ResponseOneCall>{
+            override fun onResponse(
+                call: Call<ResponseOneCall>,
+                response: Response<ResponseOneCall>
+            ) {
+                if (response.isSuccessful){
+                    Log.d(TAG, "onResponse: ${response.message()}")
+                    val weatherdata=response.body()
+                    val weatherAdapter= weatherdata!!.hourly?.let { AdapterWeather(it) }
+                    binding.recyclerview.apply {
+                        adapter=weatherAdapter
+                        layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+                    }
+
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseOneCall>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+
+
 
     }
 
@@ -157,14 +186,13 @@ class Home : Fragment() {
                         val data = response.body()!!
                         val list = response.body()!!.weather?.get(0)
 
-
                         binding.apply {
                             temperature.text = data.main?.temp.toString()
                             wind.text = data.wind?.speed.toString()
                             humidity.text = data.main?.humidity.toString()
                             currentplaceid.text = data.name
                             changeofRain.text = data.wind?.gust.toString()
-                            time.text = data.timezone.toString()
+                            data.timezone.toString().also { time.text = it }
                             weathertxt.text = list?.description.toString()
 
                             //start details about current weather
@@ -173,7 +201,6 @@ class Home : Fragment() {
                             binding.uvIndex.text = data.wind?.speed.toString()
                             binding.visivility.text = data.visibility.toString()
                             binding.pressure.text = data.main?.pressure.toString()
-
 
                         }
 
@@ -194,6 +221,7 @@ class Home : Fragment() {
 
             })
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
