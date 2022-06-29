@@ -37,7 +37,7 @@
         android:src="@drawable/weatheritemicon" />
 
     <TextView
-        android:id="@+id/endtxt"
+        android:id="@+id/tempMin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -48,11 +48,12 @@
         android:textSize="@dimen/_14sdp" />
 
     <TextView
-        android:layout_toLeftOf="@id/endtxt"
+        android:id="@+id/temmMax"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/_5sdp"
         android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_toLeftOf="@id/tempMin"
         android:fontFamily="@font/poppins_500"
         android:text="+17°"
         android:textColor="#FFFFFF"

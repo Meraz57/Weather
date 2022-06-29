@@ -108,7 +108,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="@dimen/_90sdp">
 
 
                         <TextView
@@ -120,17 +120,6 @@
                             android:textColor="@color/white"
                             android:textSize="@dimen/_60sdp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:layout_marginBottom="@dimen/_8sdp"
-                            android:fontFamily="@font/poppins_400"
-                            android:text="°"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_20sdp"
-
-                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -141,6 +130,7 @@
                             android:textSize="@dimen/_40sdp" />
 
                         <TextView
+                            android:id="@+id/tempMin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_500"
@@ -148,15 +138,7 @@
                             android:textColor="#BFFFFFFF"
                             android:textSize="@dimen/_40sdp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/_20sdp"
-                            android:layout_marginBottom="@dimen/_8sdp"
-                            android:fontFamily="@font/poppins_400"
-                            android:text="°"
-                            android:textColor="#BFFFFFFF"
-                            android:textSize="@dimen/_20sdp" />
+
 
 
                     </LinearLayout>
@@ -203,6 +185,7 @@
                         android:src="@drawable/windicon" />
 
                     <TextView
+                        android:id="@+id/windSpeed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4sdp"
@@ -238,6 +221,7 @@
                         android:src="@drawable/humidityicon" />
 
                     <TextView
+                        android:id="@+id/humidity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4sdp"
@@ -273,6 +257,7 @@
                         android:src="@drawable/changeofrainicon" />
 
                     <TextView
+                        android:id="@+id/changeofRain"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4sdp"
@@ -315,6 +300,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_5sdp"
         tools:listitem="@layout/item_sevendaysinfo"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         />
 

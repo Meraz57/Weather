@@ -1,7 +1,7 @@
-package xyz.teamprojectx.weather.data.response.nextWeek
-
-
+package com.example.weather.dataclass.data.nextWeek
 import com.google.gson.annotations.SerializedName
+import xyz.teamprojectx.weather.data.response.nextWeek.Main
+import xyz.teamprojectx.weather.data.response.nextWeek.Weather
 
 data class NextWeekData(
     @SerializedName("dt")

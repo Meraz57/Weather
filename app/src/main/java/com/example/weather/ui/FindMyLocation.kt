@@ -21,7 +21,6 @@ import com.example.weather.network.RetrofitOpenWeatherClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import xyz.teamprojectx.weather.data.response.nextWeek.ResponseNextWeek
 import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
 
 
@@ -54,7 +53,7 @@ class FindMyLocation : Fragment() {
         recyclerViewHandle()
         handleBtnClick()
         handleWeather()
-        handleDatabinding()
+       handleDatabinding()
 
 
         val drawerLayout=requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
@@ -105,12 +104,8 @@ class FindMyLocation : Fragment() {
                         temperatureCondition.text=list?.description
                         address.text=data?.name
                         lastUpdate.text= "Last Updated :${data?.timezone}"
-
                         sunriseTime.text= "${data?.sys?.sunrise}"
                         sunsetTime.text="${data?.sys?.sunset}"
-
-
-
 
                     }
 

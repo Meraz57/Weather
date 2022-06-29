@@ -7,7 +7,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
-import xyz.teamprojectx.weather.data.response.nextWeek.ResponseNextWeek
+import com.example.weather.dataclass.data.nextWeek.ResponseNextWeek
 import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
 
 interface API {

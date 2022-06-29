@@ -9,7 +9,7 @@ import java.lang.reflect.Type
 
 object mSharePrefarence {
     private var mSharedPref: SharedPreferences? = null
-    private const val NAME = "xyz.teamprojecx.weather"
+    private const val NAME = "com.example.weather.ui"
 
     fun init(context: Context) {
         if (mSharedPref == null) {

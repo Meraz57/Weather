@@ -7,10 +7,13 @@ import android.view.ViewGroup
 
 
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.weather.R
 import com.example.weather.databinding.ItemWeatherBinding
 import com.example.weather.ui.AllFuction
 import com.example.weather.dataclass.data.todayForecast.Hourly
+import com.example.weather.ui.toTime
+import java.util.*
 
 class AdapterWeather(val list: List<Hourly?>) : RecyclerView.Adapter<AdapterWeather.WeatherViewholder>() {
    private var selectedposition=0
@@ -48,15 +51,25 @@ class AdapterWeather(val list: List<Hourly?>) : RecyclerView.Adapter<AdapterWeat
 
 
         //Bind Data
-        val item= list[position]?.weather?.get(0)
-        val item1=list[position]
+
+        val item=list[position]
+        val imageUrl = item!!.weather?.getOrNull(0)?.icon?:""
         holder.binding.apply {
-            weatherFormat.text=item?.description
-            time.text= item1?.dt?.let { AllFuction.convertLongToTime(it.toLong()) }
+            weatherFormat.text = capitalization(item.weather?.getOrNull(0)?.description?:"Unknown")
+//            time.text= item.dt?.toLong()?.toTime()
+            image.load("http://openweathermap.org/img/wn/$imageUrl@2x.png")
         }
 
 
 
+    }
+
+    private fun capitalization(title:String):String{
+        var result = ""
+        title.splitToSequence(" ").filter { it.isNotEmpty() }.toList().forEach { data ->
+            result += data.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }+" "
+        }
+        return result
     }
 
     override fun getItemCount(): Int {
