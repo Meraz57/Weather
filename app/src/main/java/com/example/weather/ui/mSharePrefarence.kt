@@ -2,9 +2,12 @@ package com.example.weather.ui
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.weather.dataclass.data.nextWeek.ResponseNextWeek
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import okhttp3.Address
 import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
+import xyz.teamprojectx.weather.data.response.weather.ResponseWeather
 import java.lang.reflect.Type
 
 object mSharePrefarence {
@@ -35,7 +38,7 @@ object mSharePrefarence {
     }
 
 
-/*    fun saveCurrentWeather(currentWeather:ResponseWeather) {
+    fun saveCurrentWeather(currentWeather: ResponseWeather) {
         val prefsEditor = mSharedPref!!.edit()
         val gson = Gson()
         val json: String = gson.toJson(currentWeather)
@@ -54,24 +57,24 @@ object mSharePrefarence {
         }
     }
 
-    fun saveBlog(blogs:List<BlogData>) {
-        val prefsEditor = mSharedPref!!.edit()
-        val gson = Gson()
-        val json: String = gson.toJson(blogs)
-        prefsEditor.putString("blogs", json)
-        prefsEditor.apply()
-    }
+//    fun saveBlog(blogs:List<BlogData>) {
+//        val prefsEditor = mSharedPref!!.edit()
+//        val gson = Gson()
+//        val json: String = gson.toJson(blogs)
+//        prefsEditor.putString("blogs", json)
+//        prefsEditor.apply()
+//    }
 
-    fun getBlog():List<BlogData>?{
-        val gson = Gson()
-        val json: String? = mSharedPref!!.getString("blogs", null)
-        return if (json != null) {
-            val type: Type = object : TypeToken<List<BlogData>>() {}.type
-            gson.fromJson(json, type)
-        }else{
-            null
-        }
-    }*/
+//    fun getBlog():List<BlogData>?{
+//        val gson = Gson()
+//        val json: String? = mSharedPref!!.getString("blogs", null)
+//        return if (json != null) {
+//            val type: Type = object : TypeToken<List<BlogData>>() {}.type
+//            gson.fromJson(json, type)
+//        }else{
+//            null
+//        }
+//    }
 
     fun saveTodayForecast(responseOneCall: ResponseOneCall) {
         val prefsEditor = mSharedPref!!.edit()
@@ -92,7 +95,6 @@ object mSharePrefarence {
         }
 
     }
-/*
     fun saveNextWeek(responseOneCall: ResponseNextWeek) {
         val prefsEditor = mSharedPref!!.edit()
         val gson = Gson()
@@ -131,7 +133,7 @@ object mSharePrefarence {
             null
         }
 
-    }*/
+    }
 
 
     fun saveApiKey(apiKey: String) {

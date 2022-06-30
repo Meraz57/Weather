@@ -1,23 +1,13 @@
-package xyz.teamprojectx.weather.util
+package com.example.weather.util
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.Paint
 import android.os.Build
-import android.provider.Settings
 import android.text.Html
 import android.text.Spanned
-import android.util.Patterns
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.text.HtmlCompat
-import androidx.core.view.children
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputLayout
+import com.example.weather.ui.mSharePrefarence
 import java.text.DateFormat
-import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt

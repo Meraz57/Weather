@@ -1,6 +1,9 @@
 package com.example.weather.network
 
 import android.content.Context
+import com.example.weather.dataclass.data.currentweather.CurrentWeather
+import com.example.weather.dataclass.data.nextWeek.ResponseNextWeek
+import com.example.weather.util.Const
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,11 +12,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
-import xyz.teamprojectx.weather.data.response.location.ResponseLocation
-import xyz.teamprojectx.weather.data.response.nextWeek.ResponseNextWeek
+import com.example.weather.dataclass.data.location.ResponseLocation
 import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
-import xyz.teamprojectx.weather.data.response.weather.ResponseWeather
-import xyz.teamprojectx.weather.util.Const
 import java.util.concurrent.TimeUnit
 
 interface OpenWeatherApi {
@@ -21,36 +21,36 @@ interface OpenWeatherApi {
 
     @GET("data/2.5/weather")
     suspend fun weather(
-        @Query("lat")lat:String,
-        @Query("lon")lon:String,
-        @Query("units")units:String,
-        @Query("appid")apiKey:String ,
-        @Query("timezone")timezone:String= "UTC"
-    ):Response<ResponseWeather>
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("units") units: String,
+        @Query("appid") apiKey: String,
+        @Query("timezone") timezone: String = "UTC"
+    ): Response<CurrentWeather>
 
     @GET("geo/1.0/direct")
     suspend fun searchLocation(
-        @Query("q")query:String,
-        @Query("limit")limit:Int = 5,
-        @Query("appid")apiKey:String
-    ):Response<ResponseLocation>
+        @Query("q") query: String,
+        @Query("limit") limit: Int = 5,
+        @Query("appid") apiKey: String
+    ): Response<ResponseLocation>
 
     @GET("data/2.5/onecall")
     suspend fun todayForecast(
-        @Query("lat")lat:String,
-        @Query("lon")lon:String,
-        @Query("units")units:String,
-        @Query("exclude")exclude:String="current,minutely,daily,alerts",
-        @Query("appid")apiKey:String
-    ):Response<ResponseOneCall>
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("units") units: String,
+        @Query("exclude") exclude: String = "current,minutely,daily,alerts",
+        @Query("appid") apiKey: String
+    ): Response<ResponseOneCall>
 
     @GET("data/2.5/forecast")
     suspend fun nextWeek(
-        @Query("lat")lat:String,
-        @Query("lon")lon:String,
-        @Query("units")units:String,
-        @Query("appid")apiKey:String
-    ):Response<ResponseNextWeek>
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("units") units: String,
+        @Query("appid") apiKey: String
+    ): Response<ResponseNextWeek>
 
 
     companion object {

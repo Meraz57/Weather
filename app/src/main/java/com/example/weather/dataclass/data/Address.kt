@@ -1,4 +1,4 @@
-package xyz.teamprojectx.weather.data.response
+package com.example.weather.dataclass.data
 
 data class Address(
     val lat:String,

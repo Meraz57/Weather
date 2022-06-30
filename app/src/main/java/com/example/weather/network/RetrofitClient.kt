@@ -1,6 +1,5 @@
 package com.example.weather.network
 
-import com.example.weather.Const
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

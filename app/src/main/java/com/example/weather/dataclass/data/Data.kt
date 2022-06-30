@@ -1,9 +1,12 @@
-package xyz.teamprojectx.weather.data.response
-
-
-import com.google.gson.annotations.SerializedName
+package com.example.weather.dataclass.data
 
 data class Data(
-    @SerializedName("token")
-    val token: String?
+    val created_at: String?,
+    val description: String?,
+    val id: Int?,
+    val image: String?,
+    val status: String?,
+    val title: String?,
+    val updated_at: String?
 )
+

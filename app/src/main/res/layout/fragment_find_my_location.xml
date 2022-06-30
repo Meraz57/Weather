@@ -38,20 +38,22 @@
                     android:background="@drawable/top_bg">
 
                     <ImageView
+                        android:id="@+id/btnSearch"
                         android:layout_width="@dimen/_15sdp"
                         android:layout_height="@dimen/_15sdp"
                         android:layout_alignParentEnd="true"
-                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/_20sdp"
                         android:src="@drawable/ic_vector__14_" />
 
                     <EditText
-
+                        android:id="@+id/searchEt"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_marginRight="@dimen/_50sdp"
                         android:fontFamily="@font/poppins_400"
                         android:hint="Search Location"
+                        android:inputType="text"
                         android:paddingLeft="@dimen/_20sdp"
                         android:textColor="@color/white"
                         android:textColorHint="@color/white"
@@ -61,7 +63,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-
+                    android:id="@+id/layoutCurrentLocation"
                     android:background="@color/white">
 
                     <ImageView
@@ -75,6 +77,7 @@
                         app:tint="#000000" />
 
                     <TextView
+                        android:id="@+id/currentLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
