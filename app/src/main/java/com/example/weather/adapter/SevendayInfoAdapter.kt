@@ -14,6 +14,8 @@ class SevendayInfoAdapter(val list: Main?) : RecyclerView.Adapter<SevendayInfoAd
 
     }
 
+    //
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SevendayinfoViewholder {
         return SevendayinfoViewholder(ItemSevendaysinfoBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
