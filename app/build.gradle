@@ -79,4 +79,12 @@ dependencies {
 
     //okhttp logger
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.2"
+
+// location service
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+
+    //dexter permission library
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.github.jignesh8992:Utilities:2.3'
+
 }

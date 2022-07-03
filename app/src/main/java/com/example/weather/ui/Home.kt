@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.weather.MainActivity
 import com.example.weather.R
 import com.example.weather.adapter.AdapterWeather
 import com.example.weather.adapter.NewsAdapter
@@ -34,7 +35,6 @@ class Home : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val allfun = AllFuction
     private val api = RetrofitOpenWeatherClient.apiInterfaceOW
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +52,6 @@ class Home : Fragment() {
         newsPostRecyclerview()
         recyclerViewHandle()
         currentWeatherData()
-
 
         val drawerMenu = requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
         binding.btnDrawer.setOnClickListener {
@@ -74,7 +73,6 @@ class Home : Fragment() {
 
     private fun handleBtnClick() {
 
-
         binding.btnsevenday.setOnClickListener {
             findNavController().navigate(R.id.sevenDaysWeatherInfo)
         }
@@ -82,7 +80,6 @@ class Home : Fragment() {
 
 
     private fun recyclerViewHandle() {
-
         api.todayForecast(
             "23",
             "90",
