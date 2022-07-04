@@ -59,9 +59,10 @@ class SevenDaysWeatherInfo : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        handleRecyclerview()
+
 
         getLocation()
+
 
         val drawerLayout=requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
         binding.btnDrawer.setOnClickListener {
@@ -95,6 +96,7 @@ class SevenDaysWeatherInfo : Fragment() {
                             geocoder.getFromLocation(location.latitude, location.longitude, 1)
                         val address=list[0]
                             apiCall(address.latitude,address.longitude)
+                            handleRecyclerview(address.latitude,address.longitude)
 
                     }
                 }
@@ -155,6 +157,7 @@ class SevenDaysWeatherInfo : Fragment() {
                 getLocation()
             }else{
                 apiCall(23.812159879418545, 90.42453827869917)
+                handleRecyclerview(23.812159879418545, 90.42453827869917)
             }
         }
     }
@@ -174,10 +177,9 @@ class SevenDaysWeatherInfo : Fragment() {
 
                     binding.apply {
                         weathertxt.text=data?.description.toString()
-                        degreebtn.text="${data2?.main?.temp_max.toString()} °"
-                        tempMin.text="${data2?.main?.temp_min.toString()} °"
-
-
+                        degreebtn.text="${data2?.main?.temp_max.toString()}°"
+                        tempMin.text="${data2?.main?.temp_min.toString()}°"
+                        
                         humidity.text="${data2?.main?.humidity.toString()}%"
                         windSpeed.text= "${data2?.wind?.speed.toString()}Km/h"
                         changeofRain.text= "${data2?.wind?.gust.toString()}Km/h"
@@ -195,10 +197,8 @@ class SevenDaysWeatherInfo : Fragment() {
     }
 
 
-    private fun handleRecyclerview() {
-        api.nextWeek("23",
-            "90",
-            "e13d7e0ca2e481d477ee300f03e94f3d").enqueue(object :Callback<ResponseNextWeek>{
+    private fun handleRecyclerview(lat:Double,lon: Double) {
+        api.nextWeek("$lat","$lon","e13d7e0ca2e481d477ee300f03e94f3d").enqueue(object :Callback<ResponseNextWeek>{
             override fun onResponse(
                 call: Call<ResponseNextWeek>,
                 response: Response<ResponseNextWeek>

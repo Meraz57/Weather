@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,6 +50,7 @@ class SearchByDate : Fragment() {
 
         handleSelectDate()
         recyclerViewHandle()
+
 
 
         binding.btnDrawer.setOnClickListener {
@@ -102,7 +104,6 @@ class SearchByDate : Fragment() {
 
     private fun handleSelectDate() {
         val datePicker = MaterialDatePicker.Builder.datePicker().setTitleText("Select Date").build()
-
         binding.btnSelectDate.setOnClickListener {
             datePicker.show(requireActivity().supportFragmentManager, "tag")
         }
