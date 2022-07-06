@@ -10,19 +10,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/poppins_500"
         android:text="Mon"
         android:textColor="#BFFFFFFF"
-        android:fontFamily="@font/poppins_500"
-        android:textSize="@dimen/_14sdp"
-        android:layout_centerVertical="true"
-        />
+        android:textSize="@dimen/_14sdp" />
 
     <TextView
-        android:id="@+id/centertxt"
+        android:id="@+id/weatherFormat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
         android:fontFamily="@font/poppins_500"
         android:text="Rainy"
         android:textColor="#BFFFFFFF"
@@ -33,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginRight="13dp"
-        android:layout_toLeftOf="@id/centertxt"
+        android:layout_toLeftOf="@id/weatherFormat"
         android:src="@drawable/weatheritemicon" />
 
     <TextView

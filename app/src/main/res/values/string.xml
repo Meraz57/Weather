@@ -48,11 +48,8 @@
     <string name="thunderstrom">Thunderstorm</string>    <string name="_34">34%</string>
     <string name="change_of_rain">Change Of Rain</string>
 
-
     <string name="facebook_app_id">742149253869086</string>
     <string name="fb_login_protocol_scheme">fb742149253869086</string>
     <string name="facebook_client_token">6e4ea416752e2c9db4f985108fffb856</string>
-
-
 
 </resources>

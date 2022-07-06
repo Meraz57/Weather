@@ -47,6 +47,7 @@
         <activity android:name=".ui.LandingActivity"
             tools:ignore="DuplicateActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

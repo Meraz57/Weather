@@ -417,6 +417,8 @@ object mSharePrefarence {
     }
 
     fun getTimeFormat(): String {
+
         return mSharedPref!!.getString("time_format", TIME_24)!!
+
     }
 }

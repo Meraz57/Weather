@@ -49,15 +49,15 @@ class AdapterWeather(val list: List<Hourly?>) : RecyclerView.Adapter<AdapterWeat
              notifyDataSetChanged()
         }
 
-
         //Bind Data
-
         val item=list[position]
         val imageUrl = item!!.weather?.getOrNull(0)?.icon?:""
         holder.binding.apply {
             weatherFormat.text = capitalization(item.weather?.getOrNull(0)?.description?:"Unknown")
-//            time.text= item.dt?.toLong()?.toTime()
             image.load("http://openweathermap.org/img/wn/$imageUrl@2x.png")
+            time.text=item.dt?.toLong()?.toTime().toString()
+
+
         }
 
 

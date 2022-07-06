@@ -2,7 +2,6 @@ package com.example.weather.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,6 +9,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -17,6 +17,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
@@ -25,7 +26,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weather.MainActivity
 import com.example.weather.R
 import com.example.weather.adapter.AdapterWeather
 import com.example.weather.adapter.NewsAdapter
@@ -42,6 +42,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 import java.util.*
 
 
@@ -96,6 +99,12 @@ class Home : Fragment() {
         }
     }
 
+    companion object{
+        private const val TAG = "Home"
+    }
+
+
+
 
     private fun recyclerViewHandle(lat: Double,lon: Double) {
         api.todayForecast(
@@ -108,20 +117,26 @@ class Home : Fragment() {
                 call: Call<ResponseOneCall>,
                 response: Response<ResponseOneCall>
             ) {
+//ei pi post mn e hhit kore dekh d
                 if (response.isSuccessful){
-                    Log.d(TAG, "onResponse: ${response.message()}")
+                    Log.d(TAG, "onResponse home recycelrview: ${response.message()}")
                     val weatherdata=response.body()
+
+                    Log.d(TAG, "onResponse home recycelrview: ${weatherdata?.hourly}")
                     val weatherAdapter= weatherdata!!.hourly?.let { AdapterWeather(it) }
                     binding.recyclerview.apply {
                         adapter=weatherAdapter
                         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                     }
 
+                }else{
+                    Log.d(TAG, "onResponse: ${response.errorBody()?.string()}")
                 }
+                ///ene else nei keno
             }
 
             override fun onFailure(call: Call<ResponseOneCall>, t: Throwable) {
-                Log.d(TAG, "onFailure: ${t.message}")
+                Log.d(TAG, "onFailure home recyclerview: ${t.message}")
             }
 
         })
@@ -177,9 +192,9 @@ class Home : Fragment() {
                 0 -> {
                     tab.text = resources.getString(R.string.today)
                 }
-                1 -> {
-                    tab.text = resources.getString(R.string.tomorrow)
-                }
+//                1 -> {
+//                    tab.text = resources.getString(R.string.tomorrow)
+//                }
             }
 
         }.attach()
@@ -189,20 +204,34 @@ class Home : Fragment() {
 
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun getLocation() {
+
+        Log.d(TAG, "getLocation: 1st")
+
         if (checkPermissions()) {
+            Log.d(TAG, "getLocation: 2nd")
             if (isLocationEnabled()) {
+                Log.d(TAG, "getLocation: 3rd")
                 fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
                 fusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
                     val location: Location? = task.result
+                    Log.d(TAG, "getLocation: 4th $location")
                     if (location != null) {
+
+                        Log.d(TAG, "getLocation: 5th")
                         Log.d("TAG", "getLocation: Location find")
                         val geocoder = Geocoder(requireContext(), Locale.getDefault())
                         val list: List<Address> =
                             geocoder.getFromLocation(location.latitude, location.longitude, 1)
                         val address=list[0]
 
-                        currentWeatherData(address.latitude,address.longitude)
+                        binding.currentplaceid.text="${address.adminArea},${address.locality} "
+                        Log.d(TAG, "getLocation: Got permission")
                         recyclerViewHandle(address.latitude,address.longitude)
+                        currentWeatherData(address.latitude,address.longitude)
+
+                    }else{
+                        dummyLocation()
+
 
                     }
                 }
@@ -258,19 +287,23 @@ class Home : Fragment() {
         permissions: Array<String>,
         grantResults: IntArray
     ) {
+
         if (requestCode == permissionId) {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 getLocation()
             }else{
 
-                currentWeatherData(23.812159879418545, 90.42453827869917)
-
-                recyclerViewHandle(23.812159879418545, 90.42453827869917)
+                Log.d(TAG, "onRequestPermissionsResult: permison not got")
+                dummyLocation()
 
             }
         }
     }
 
+    private fun dummyLocation() {
+        currentWeatherData(23.812159879418545, 90.42453827869917)
+        recyclerViewHandle(23.812159879418545, 90.42453827869917)
+    }
 
 
     private fun currentWeatherData(lat:Double,lon:Double) {
@@ -278,6 +311,7 @@ class Home : Fragment() {
         val api = RetrofitOpenWeatherClient.apiInterfaceOW
         api.weather("$lat", "$lon", "e13d7e0ca2e481d477ee300f03e94f3d")
             .enqueue(object : Callback<CurrentWeather> {
+                @RequiresApi(Build.VERSION_CODES.O)
                 override fun onResponse(
                     call: Call<CurrentWeather>,
                     response: Response<CurrentWeather>
@@ -288,21 +322,25 @@ class Home : Fragment() {
                         val list = response.body()!!.weather?.get(0)
 
                         binding.apply {
-
+                            time.text= data.dt?.toLong()?.toTime().toString()
                             temperature.text = Math.round(data.main?.temp!! -273.15).toInt().toString()
                             wind.text = data.wind?.speed.toString()
-                            humidity.text = data.main?.humidity.toString()
-                            currentplaceid.text = data.name
+                            humidity.text = "${data.main.humidity.toString()}%"
                             changeofRain.text = data.wind?.gust.toString()
-                            data.timezone.toString().also { time.text = it }
                             weathertxt.text = list?.description.toString()
 
                             //start details about current weather
-                            binding.temperaturehome.text = Math.round(data.main?.temp!! -273.15).toInt().toString()
-                            binding.feelsLike.text = data.main?.feels_like.toString()
-                            binding.uvIndex.text = data.wind?.speed.toString()
+                            binding.temperaturehome.text = Math.round(data.main.temp -273.15).toInt().toString()
+                            binding.feelsLike.text = Math.round(data.main.feels_like!!-273.15).toInt().toString()
+                            binding.uvIndex.text = Math.round(data.wind?.speed!! -273.15).toInt().toString()
                             binding.visivility.text = data.visibility.toString()
-                            binding.pressure.text = data.main?.pressure.toString()
+                            binding.pressure.text = data.main.pressure.toString()
+
+                            val current = LocalDateTime.now()
+                            val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+                            currentDate.text = current.format(formatter)
+
+
 
                         }
 

@@ -29,6 +29,7 @@ import com.example.weather.adapter.AdapterWeather
 import com.example.weather.databinding.FragmentFindByLocationBinding
 import com.example.weather.dataclass.data.currentweather.CurrentWeather
 import com.example.weather.network.RetrofitOpenWeatherClient
+import com.google.android.gms.common.internal.FallbackServiceBroker
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import retrofit2.Call
@@ -90,11 +91,11 @@ class FindByLocation : Fragment() {
                             geocoder.getFromLocation(location.latitude, location.longitude, 1)
                         val address=list[0]
 
+                      binding.address.text=  "${address.adminArea},${address.locality}"
+                        binding.location.text="${address.adminArea},${address.locality}"
+                        binding.location1.text="${address.adminArea},${address.locality}"
                         handleWeatherData(address.latitude,address.longitude)
                         recyclerViewHandle(address.latitude,address.longitude)
-
-
-
                     }
                 }
             } else {
@@ -214,17 +215,14 @@ class FindByLocation : Fragment() {
                         Log.d(TAG, "onResponse: ${response.message()}")
 
                         val data = response.body()!!
+                        val weather=data.weather?.get(0)
 
                         binding.apply {
 
-                            sunriseTime.text = data.sys?.sunrise.toString()
-                            sunsetTime.text = data.sys?.sunset.toString()
-                            temperature.text=data.main?.temp.toString()
-                            address.text=data.name
-                            location.text=data.name
-                            location1.text=data.name
-
-
+                            sunriseTime.text = data.sys?.sunrise?.toLong()?.toTime()
+                            sunsetTime.text = data.sys?.sunset?.toLong()?.toTime()
+                            temperature.text=data.main?.temp?.minus(273.15)?.toInt().toString()
+                            temperatureCondition.text= weather?.description.toString()
 
 
 
@@ -241,6 +239,7 @@ class FindByLocation : Fragment() {
             })
 
     }
+
 
 
 }

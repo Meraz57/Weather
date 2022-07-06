@@ -208,7 +208,7 @@
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:background="#3BFFFFFF"/>
 
-            <RelativeLayout
+         <!--   <RelativeLayout
                 android:id="@+id/btnWeatherFormat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -239,9 +239,10 @@
                     android:textSize="@dimen/_16ssp" />
 
 
-            </RelativeLayout>
+            </RelativeLayout>-->
 
             <LinearLayout
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_16sdp"

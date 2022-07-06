@@ -8,6 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
 import com.example.weather.dataclass.data.nextWeek.ResponseNextWeek
+import xyz.teamprojectx.weather.data.response.location.ResponseLocation
 import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
 
 interface API {
@@ -38,4 +39,12 @@ interface API {
         @Query("lon") lon: String,
         @Query("appid") apiKey: String
     ): Call<ResponseNextWeek>
+
+    @GET("geo/1.0/direct")
+     fun searchLocation(
+        @Query("q")query:String,
+        @Query("limit")limit:Int = 5,
+        @Query("appid")apiKey:String
+    ):Call<ResponseLocation>
+
 }

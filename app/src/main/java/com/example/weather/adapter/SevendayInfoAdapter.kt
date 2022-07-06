@@ -4,8 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.databinding.ItemSevendaysinfoBinding
-import com.example.weather.dataclass.data.todayForecast.Hourly
-import xyz.teamprojectx.weather.data.response.nextWeek.Main
+import com.example.weather.dataclass.data.nextWeek.Main
 
 class SevendayInfoAdapter(val list: Main?) : RecyclerView.Adapter<SevendayInfoAdapter.SevendayinfoViewholder>() {
 
@@ -22,10 +21,11 @@ class SevendayInfoAdapter(val list: Main?) : RecyclerView.Adapter<SevendayInfoAd
         val item=list
         holder.binding.apply {
             if (item != null) {
-                temmMax.text="+${item.tempMax.toString()}°"
+                temmMax.text="+${item.tempMax?.minus(273.15)?.toInt().toString()}°"
             }
+
             if (item != null) {
-                tempMin.text="+${item.tempMin.toString()}°"
+                tempMin.text="+${item.tempMin?.minus(273.15)?.toInt().toString()}°"
             }
 
         }
@@ -33,7 +33,7 @@ class SevendayInfoAdapter(val list: Main?) : RecyclerView.Adapter<SevendayInfoAd
     }
 
     override fun getItemCount(): Int {
-       return 13
+        return 7
            }
 
 

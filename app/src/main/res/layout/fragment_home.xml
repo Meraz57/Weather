@@ -50,7 +50,7 @@
                         <ImageView
                             android:layout_width="@dimen/_12sdp"
                             android:layout_height="@dimen/_12sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
                             android:src="@drawable/locationicon"
 
                             />
@@ -92,12 +92,12 @@
                         android:textColor="#BFFFFFFF"
                         android:textSize="@dimen/_10sdp" />
 
-                    <ImageView
+                 <!--   <ImageView
                         android:id="@+id/refresh_btn"
                         android:layout_width="@dimen/_11sdp"
                         android:layout_height="@dimen/_11sdp"
                         android:layout_marginLeft="@dimen/_5sdp"
-                        android:src="@drawable/refreshbtn" />
+                        android:src="@drawable/refreshbtn" />-->
 
 
                 </LinearLayout>
@@ -158,6 +158,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/current_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/weathertxt"
@@ -566,9 +567,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:fontFamily="@font/poppins_300"
-                            android:text="18° C"
+                            android:text=""
                             android:textColor="#BFFFFFFF"
                             android:textSize="@dimen/_10sdp" />
+
                         <TextView
                             android:layout_marginLeft="@dimen/_2sdp"
                             android:layout_width="wrap_content"

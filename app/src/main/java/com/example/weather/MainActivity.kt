@@ -115,11 +115,11 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.fragmentContainerView).navigate(R.id.searchByDate)
         }
 
-        binding.btnWeatherFormat.setOnClickListener{
+        /*binding.btnWeatherFormat.setOnClickListener{
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController(R.id.fragmentContainerView).navigate(R.id.weatherFormat)
 
-        }
+        }*/
         binding.btnLoginLogout.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController(R.id.fragmentContainerView).navigate(R.id.login)
@@ -148,6 +148,11 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnSubscription.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            findNavController(R.id.fragmentContainerView).navigate(R.id.upgradeToPremium)
+        }
+
+        binding.btnPrivacyPolicy.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController(R.id.fragmentContainerView).navigate(R.id.upgradeToPremium)
         }

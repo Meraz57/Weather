@@ -46,16 +46,21 @@ fun Long.toDate(): String {
    return SimpleDateFormat(pattern, Locale.getDefault()).format(Date(this * 1000))
 }
 
-
 fun Long.toTime(): String {
-    val pattern = if (mSharePrefarence.getTimeFormat() == mSharePrefarence.TIME_24) {
-        "HH:mm"
-    } else {
-        "hh:mm a"
-    }
-    return SimpleDateFormat(pattern, Locale.getDefault()).format(Date(this * 1000))
+
+    return SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date(this * 1000))
 
 }
+
+//fun Long.toTime(): String {
+//    val pattern = if (mSharePrefarence.getTimeFormat() == mSharePrefarence.TIME_24) {
+//        "HH:mm"
+//    } else {
+//        "hh:mm a"
+//    }
+//    return SimpleDateFormat(pattern, Locale.getDefault()).format(Date(this * 1000))
+//
+//}
 
 
 fun Long.toDateTime(): String {

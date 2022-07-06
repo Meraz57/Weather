@@ -2,6 +2,7 @@ package com.example.weather.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -177,8 +178,8 @@ class SevenDaysWeatherInfo : Fragment() {
 
                     binding.apply {
                         weathertxt.text=data?.description.toString()
-                        degreebtn.text="${data2?.main?.temp_max.toString()}°"
-                        tempMin.text="${data2?.main?.temp_min.toString()}°"
+                        degreebtn.text="${data2?.main?.temp_max?.minus(273.15)?.toInt().toString()}"
+                        tempMin.text="${data2?.main?.temp_min?.minus(273.15)?.toInt().toString()}"
                         
                         humidity.text="${data2?.main?.humidity.toString()}%"
                         windSpeed.text= "${data2?.wind?.speed.toString()}Km/h"
@@ -214,7 +215,7 @@ class SevenDaysWeatherInfo : Fragment() {
             }
 
             override fun onFailure(call: Call<ResponseNextWeek>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.d(TAG, "onFailure: ${t.message}")
             }
         })
     }

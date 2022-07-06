@@ -17,6 +17,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -24,16 +25,24 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jdrodi.utilities.showPermissionsAlert
 import com.example.weather.R
 import com.example.weather.adapter.AdapterWeather
 import com.example.weather.databinding.FragmentFindMyLocationBinding
 import com.example.weather.dataclass.data.currentweather.CurrentWeather
 import com.example.weather.network.RetrofitOpenWeatherClient
+import com.example.weather.ui.mSharePrefarence.getTodayForecast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import xyz.teamprojectx.weather.data.response.location.ResponseLocation
 import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
 import java.util.*
 
@@ -46,7 +55,10 @@ class FindMyLocation : Fragment() {
     private val api = RetrofitOpenWeatherClient.apiInterfaceOW
     private val permissionId = 2
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-
+    private val locationPermission = arrayOf(
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,11 +72,67 @@ class FindMyLocation : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.next7days.setOnClickListener {
+            findNavController().navigate(R.id.sevenDaysWeatherInfo)
+        }
+
+        binding.searchEt.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val key = binding.searchEt.text.toString()
+                if (key.isNotEmpty()) {
+                    api.searchLocation("$key", 5, "e13d7e0ca2e481d477ee300f03e94f3d")
+                        .enqueue(object : Callback<ResponseLocation> {
+                            @SuppressLint("SetTextI18n")
+                            override fun onResponse(
+                                call: Call<ResponseLocation>,
+                                response: Response<ResponseLocation>
+                            ) {
+                                if (response.isSuccessful) {
+                                    Log.d(TAG, "onResponse: Find")
+                                    val address = response.body()?.get(0)
+
+                                    binding.apply {
+
+                                        currentLocation.text =
+                                            "${address?.state},${address?.country} "
+
+                                        address3.text = "${address?.state},${address?.country} "
+
+                                    }
+                                } else {
+                                    Log.d(TAG, "onResponse: ${response.errorBody().toString()}")
+                                }
+                            }
+
+                            override fun onFailure(call: Call<ResponseLocation>, t: Throwable) {
+                                Log.d(TAG, "onFailure: ${t.message}")
+                            }
 
 
-        handleBtnClick()
-        handleWeather()
-        getLocation()
+                        })
+
+                } else {
+                    requireContext().toast("Please Write Something to Search")
+                }
+            }
+            true
+        }
+
+        binding.btnSearch.setOnClickListener {
+
+            val key = binding.searchEt.text.toString()
+            if (key.isNotEmpty()) {
+                api.searchLocation(key, 5, "e13d7e0ca2e481d477ee300f03e94f3d")
+            } else {
+                requireContext().toast("Please Write Something to Search")
+
+            }
+
+        }
+
+        binding.layoutCurrentLocation.setOnClickListener {
+            checkPermission()
+        }
 
 
         val drawerLayout = requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
@@ -76,113 +144,87 @@ class FindMyLocation : Fragment() {
             }
         }
 
+
     }
 
-    private fun handleWeather() {
-        val api = RetrofitOpenWeatherClient.apiInterfaceOW
-        api.weather("23", "90", "e13d7e0ca2e481d477ee300f03e94f3d")
-            .enqueue(object : Callback<CurrentWeather> {
-                override fun onResponse(
-                    call: Call<CurrentWeather>,
-                    response: Response<CurrentWeather>
+
+    private fun checkPermission() {
+
+        Dexter.withContext(requireContext())
+            .withPermissions(*locationPermission)
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
+                    report?.let {
+                        when {
+                            report.areAllPermissionsGranted() -> {
+
+                                currentLocation()
+                            }
+                            report.isAnyPermissionPermanentlyDenied -> {
+                                requireContext().showPermissionsAlert(
+                                    permission_msg = "For your location weather you must give location permission",
+                                    ""
+                                )
+                            }
+                            else -> {
+                                binding.currentLocation.text =
+                                    resources.getString(R.string.get_current_location)
+                                requireContext().toast("Required Permissions not granted")
+                            }
+                        }
+                    }
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: MutableList<PermissionRequest>?,
+                    token: PermissionToken?
                 ) {
-                    if (response.isSuccessful) {
-                        Log.d(TAG, "onResponse: ")
-                    }
+                    // Remember to invoke this method when the custom rationale is closed
+                    // or just by default if you don't want to use any custom rationale.
+                    token?.continuePermissionRequest()
                 }
-
-                override fun onFailure(call: Call<CurrentWeather>, t: Throwable) {
-                    TODO("Not yet implemented")
-                }
-
             })
-    }
-
-
-    @SuppressLint("MissingPermission", "SetTextI18n")
-    private fun getLocation() {
-        if (checkPermissions()) {
-            if (isLocationEnabled()) {
-                fusedLocationClient =
-                    LocationServices.getFusedLocationProviderClient(requireActivity())
-                fusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
-                    val location: Location? = task.result
-                    if (location != null) {
-                        Log.d("TAG", "getLocation: Location find")
-                        val geocoder = Geocoder(requireContext(), Locale.getDefault())
-                        val list: List<Address> =
-                            geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                        val address = list[0]
-                        handleDatabinding(address.latitude, address.longitude)
-                        recyclerViewHandle(address.latitude, address.longitude)
-
-
-                    }
-                }
-            } else {
-
-                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-                startActivity(intent)
+            .withErrorListener {
+                requireContext().toast(it.name)
             }
-        } else {
-            requestPermissions()
-        }
+            .check()
     }
 
-    private fun isLocationEnabled(): Boolean {
-        val locationManager: LocationManager =
-            requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-            LocationManager.NETWORK_PROVIDER
-        )
-    }
 
-    private fun checkPermissions(): Boolean {
+    private fun currentLocation() {
+
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                 requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
         ) {
-            return true
+
+            return
         }
-        return false
-    }
-
-    private fun requestPermissions() {
-
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            arrayOf(
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ),
-            permissionId
-        )
-    }
+        fusedLocationClient = FusedLocationProviderClient(requireContext())
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                if (location != null) {
 
 
-    @SuppressLint("MissingSuperCall")
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == permissionId) {
-            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                getLocation()
-            } else {
+                    val geocoder = Geocoder(requireContext())
+                    val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                    Log.d(TAG, "onCreate: ${address[0].locality} ${address[0].countryName}")
+                    val currentAddress = address.getOrNull(0)
 
-                handleDatabinding(23.812159879418545, 90.42453827869917)
+                    binding.currentLocation.text = "${currentAddress?.locality}, ${currentAddress?.countryName}"
+                    handleDatabinding(location.latitude,location.longitude)
+                    recyclerViewHandle(location.latitude,location.longitude)
 
-                recyclerViewHandle(23.812159879418545, 90.42453827869917)
+                }
+
 
             }
-        }
     }
+
 
     private fun handleDatabinding(lat: Double, lon: Double) {
 
@@ -198,12 +240,11 @@ class FindMyLocation : Fragment() {
                         val list = response.body()?.weather?.get(0)
                         binding.apply {
 
-                            temperature.text = data?.main?.temp.toString()
+                            temperature.text = data?.main?.temp?.minus(273.15)?.toInt().toString()
                             temperatureCondition.text = list?.description
-                            address.text = data?.name
-                            lastUpdate.text = "Last Updated :${data?.timezone}"
-                            sunriseTime.text = "${data?.sys?.sunrise}"
-                            sunsetTime.text = "${data?.sys?.sunset}"
+                            lastUpdate.text = "Last Updated :${data?.timezone?.toLong()?.toTime().toString()}"
+                            sunriseTime.text = "${data?.sys?.sunrise?.toLong()?.toTime().toString()}"
+                            sunsetTime.text = "${data?.sys?.sunset?.toLong()?.toTime().toString()}"
 
                         }
 
@@ -219,13 +260,13 @@ class FindMyLocation : Fragment() {
             })
 
 
-    }
+    }//koi
 
     private fun recyclerViewHandle(lat: Double, lon: Double) {
 
         api.todayForecast(
             "$lat",
-            "$lat",
+            "$lon",
             "current,minutely,daily,alerts",
             "e13d7e0ca2e481d477ee300f03e94f3d"
         ).enqueue(object : Callback<ResponseOneCall> {
@@ -241,7 +282,6 @@ class FindMyLocation : Fragment() {
                         adapter = weatherAdapter
                         layoutManager =
                             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-
 
                     }
 
@@ -268,4 +308,5 @@ class FindMyLocation : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
 }

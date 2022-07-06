@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navyblue"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PrivecyPolicyFragment">
+
+
+    <RelativeLayout
+        android:id="@+id/PrivacyPolicy"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:src="@drawable/ic_back_"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppins_400"
+            android:text="Privacy Policy"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp" />
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_below="@id/PrivacyPolicy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_400"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/white"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at condimentum ut et blandit etiam euismod sodales in. Pharetra imperdiet aliquet massa interdum tortor sed eget sed. Vitae volutpat fermentum nunc accumsan arcu aliquet vivamus. Magna venenatis eget ornare tempus ut platea feugiat vestibulum diam.
+Blandit aliquam, interdum phasellus libero sed sagittis at.Volutpat quis purus bibendum etiam etiam eu tortor, quisque. Viverra eget dolor sed a sed sagittis pharetra commodo. Nisl, amet sed vitae eros. Tristique eget tempus elit aliquet feugiat luctus pellentesque consectetur. Odio id feugiat bibendum quam bibendum placerat semper cras ac. Bibendum faucibus."
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp" />
+    </ScrollView>
+
+
+</RelativeLayout>
