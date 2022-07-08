@@ -32,6 +32,8 @@ class AboutUs : Fragment() {
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
+
+            // somosha ta hoilo tr search dile location onujai weather information show kore na ..
         }
 
         }

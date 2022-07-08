@@ -117,7 +117,7 @@ class Home : Fragment() {
                 call: Call<ResponseOneCall>,
                 response: Response<ResponseOneCall>
             ) {
-//ei pi post mn e hhit kore dekh d
+
                 if (response.isSuccessful){
                     Log.d(TAG, "onResponse home recycelrview: ${response.message()}")
                     val weatherdata=response.body()
@@ -179,7 +179,7 @@ class Home : Fragment() {
         })
     }
 
-
+// set tablayout
     private fun setTabLayout() {
 
         val tabAdapter = TabLayoutAdapter(childFragmentManager, lifecycle)
@@ -200,7 +200,6 @@ class Home : Fragment() {
         }.attach()
 
     }
-
 
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun getLocation() {

@@ -1,6 +1,3 @@
-package xyz.teamprojectx.weather.data.response.location
-
-
-import com.google.gson.annotations.SerializedName
+package com.example.weather.dataclass.data.location
 
 class ResponseLocation : ArrayList<ResponseLocationItem>()

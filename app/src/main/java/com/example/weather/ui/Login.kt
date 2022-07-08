@@ -1,4 +1,5 @@
 package com.example.weather.ui
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -6,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.weather.MainActivity
 import com.example.weather.R
@@ -58,9 +58,10 @@ class Login : Fragment() {
 
         //Google login with firebase
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//            .requestIdToken(getString(R.string.defult_web_client_id))
+            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
+
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), googleSignInOptions)
 
         //let,s init firebase auth
@@ -105,11 +106,12 @@ class Login : Fragment() {
     private fun checkUser() {
         val firebaseUser = auth.currentUser
         if (firebaseUser != null) {
-            //user already loggedIn
-//            Intent(context, MainActivity::class.java).apply {
-//                startActivity(this)
-//            }
-//            requireActivity().finish()
+//            user already loggedIn
+            Log.d(TAG, "checkUser: ")
+            Intent(context, MainActivity::class.java).apply {
+                startActivity(this)
+            }
+            requireActivity().finish()
 
         }
     }
@@ -204,13 +206,11 @@ class Login : Fragment() {
 
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    Log.w("TAG", "signInWithCredential:failure", task.exception)
+
                     Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT)
                         .show()
-                    Toast.makeText(
-                        context, "Authentication failed.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+
 
                 }
             }

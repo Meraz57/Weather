@@ -1,43 +1,45 @@
 package com.example.weather
+
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.icu.lang.UCharacter.IndicPositionalCategory.LEFT
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.view.Gravity
-import android.view.Gravity.LEFT
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import com.example.weather.databinding.ActivityMainBinding
+import com.example.weather.ui.SplashScreen
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import java.lang.invoke.ConstantCallSite
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var binding: ActivityMainBinding
+    private lateinit var auth: FirebaseAuth
     private val permissionId = 2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         controlNavigationDrawer()
-
+        auth= Firebase.auth
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         getLocation()
+
+
 
 
     }
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity() {
             requestPermissions()
         }
     }
+
     private fun isLocationEnabled(): Boolean {
         val locationManager: LocationManager =
             getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -71,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             LocationManager.NETWORK_PROVIDER
         )
     }
+
     private fun checkPermissions(): Boolean {
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -85,6 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }
+
     private fun requestPermissions() {
         ActivityCompat.requestPermissions(
             this,
@@ -95,6 +100,7 @@ class MainActivity : AppCompatActivity() {
             permissionId
         )
     }
+
     @SuppressLint("MissingSuperCall")
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -115,14 +121,18 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.fragmentContainerView).navigate(R.id.searchByDate)
         }
 
+
         /*binding.btnWeatherFormat.setOnClickListener{
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController(R.id.fragmentContainerView).navigate(R.id.weatherFormat)
 
         }*/
+
+
         binding.btnLoginLogout.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController(R.id.fragmentContainerView).navigate(R.id.login)
+            Firebase.auth.signOut()
         }
 
 
@@ -154,7 +164,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnPrivacyPolicy.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
-            findNavController(R.id.fragmentContainerView).navigate(R.id.upgradeToPremium)
+            findNavController(R.id.fragmentContainerView).navigate(R.id.action_home_to_privecyPolicyFragment2)
         }
 
 

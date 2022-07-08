@@ -70,7 +70,7 @@
                     android:id="@+id/layoutCurrentLocation"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:background="@color/white">
+                    android:background="@drawable/findlocation_bg">
 
                     <ImageView
                         android:id="@+id/arrowicon"
@@ -97,33 +97,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:background="@drawable/findlocation_bg">
-
-                    <ImageView
-                        android:layout_width="@dimen/_15sdp"
-
-                        android:layout_height="@dimen/_15sdp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:src="@drawable/ic_vector__14_"
-                        app:tint="#000000" />
-
-                    <TextView
-                        android:id="@+id/address2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:fontFamily="@font/poppins_400"
-                        android:text="Nikunja-2 Khilkhet, Dhaka"
-                        android:textSize="@dimen/_12sdp" />
-
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -389,10 +362,10 @@
                         android:layout_height="wrap_content"
                         android:text="Today" />
 
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tomorrow" />
+<!--                    <com.google.android.material.tabs.TabItem-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tomorrow" />-->
 
                 </com.google.android.material.tabs.TabLayout>
 

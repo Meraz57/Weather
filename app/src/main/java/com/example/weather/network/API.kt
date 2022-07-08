@@ -1,14 +1,12 @@
 package com.example.weather.network
 import com.example.weather.dataclass.data.ResponseNewsData
 import com.example.weather.dataclass.data.currentweather.CurrentWeather
-import com.example.weather.dataclass.data.currentweather.Main
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
 import com.example.weather.dataclass.data.nextWeek.ResponseNextWeek
-import xyz.teamprojectx.weather.data.response.location.ResponseLocation
+import com.example.weather.dataclass.data.location.ResponseLocation
 import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
 
 interface API {

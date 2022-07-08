@@ -3,15 +3,10 @@ package com.example.weather.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
-import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -31,9 +26,7 @@ import com.example.weather.adapter.AdapterWeather
 import com.example.weather.databinding.FragmentFindMyLocationBinding
 import com.example.weather.dataclass.data.currentweather.CurrentWeather
 import com.example.weather.network.RetrofitOpenWeatherClient
-import com.example.weather.ui.mSharePrefarence.getTodayForecast
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -42,9 +35,8 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import xyz.teamprojectx.weather.data.response.location.ResponseLocation
+import com.example.weather.dataclass.data.location.ResponseLocation
 import xyz.teamprojectx.weather.data.response.todayForecast.ResponseOneCall
-import java.util.*
 
 
 class FindMyLocation : Fragment() {
@@ -92,6 +84,9 @@ class FindMyLocation : Fragment() {
                                     val address = response.body()?.get(0)
 
                                     binding.apply {
+
+                                        handleDatabinding("${address?.lat}" ,"${address?.lon}")
+                                        recyclerViewHandle("${address?.lat}","${address?.lon}")
 
                                         currentLocation.text =
                                             "${address?.state},${address?.country} "
@@ -147,9 +142,8 @@ class FindMyLocation : Fragment() {
 
     }
 
-
+// check user location permission
     private fun checkPermission() {
-
         Dexter.withContext(requireContext())
             .withPermissions(*locationPermission)
             .withListener(object : MultiplePermissionsListener {
@@ -209,15 +203,17 @@ class FindMyLocation : Fragment() {
             .addOnSuccessListener { location: Location? ->
                 if (location != null) {
 
-
                     val geocoder = Geocoder(requireContext())
                     val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+
                     Log.d(TAG, "onCreate: ${address[0].locality} ${address[0].countryName}")
                     val currentAddress = address.getOrNull(0)
 
-                    binding.currentLocation.text = "${currentAddress?.locality}, ${currentAddress?.countryName}"
-                    handleDatabinding(location.latitude,location.longitude)
-                    recyclerViewHandle(location.latitude,location.longitude)
+                    binding.currentLocation.text = "${currentAddress?.locality},${currentAddress?.countryName}"
+
+
+                   // TODO eikhane fun call dewa baki ache ..
+
 
                 }
 
@@ -226,7 +222,7 @@ class FindMyLocation : Fragment() {
     }
 
 
-    private fun handleDatabinding(lat: Double, lon: Double) {
+    private fun handleDatabinding(lat: String, lon: String) {
 
         api.weather("$lat", "$lon", "e13d7e0ca2e481d477ee300f03e94f3d")
             .enqueue(object : Callback<CurrentWeather> {
@@ -262,7 +258,7 @@ class FindMyLocation : Fragment() {
 
     }//koi
 
-    private fun recyclerViewHandle(lat: Double, lon: Double) {
+    private fun recyclerViewHandle(lat: String, lon: String) {
 
         api.todayForecast(
             "$lat",

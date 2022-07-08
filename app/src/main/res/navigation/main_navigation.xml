@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_home_to_sevenDaysWeatherInfo"
             app:destination="@id/sevenDaysWeatherInfo" />
+        <action
+            android:id="@+id/action_home_to_privecyPolicyFragment2"
+            app:destination="@id/privecyPolicyFragment2" />
     </fragment>
     <fragment
         android:id="@+id/findByLocation"
@@ -100,4 +103,9 @@
         android:name="com.example.weather.ui.SevenDaysWeatherInfo"
         android:label="fragment_seven_days_weather_info"
         tools:layout="@layout/fragment_seven_days_weather_info" />
+    <fragment
+        android:id="@+id/privecyPolicyFragment2"
+        android:name="com.example.weather.PrivecyPolicyFragment"
+        android:label="fragment_privecy__policy_"
+        tools:layout="@layout/fragment_privecy__policy_" />
 </navigation>
