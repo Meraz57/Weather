@@ -266,7 +266,7 @@ class FindMyLocation : Fragment() {
                     val currentAddress = address.getOrNull(0)
 
                 /*    binding.currentLocation.text = "${currentAddress?.locality},${currentAddress?.countryName}"*/
-
+//hello
 
                 }
 
