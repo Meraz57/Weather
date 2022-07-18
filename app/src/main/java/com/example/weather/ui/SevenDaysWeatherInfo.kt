@@ -22,8 +22,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.weather.adapter.SevendayInfoAdapter
 import com.example.weather.R
 import com.example.weather.databinding.FragmentSevenDaysWeatherInfoBinding
@@ -60,10 +62,9 @@ class SevenDaysWeatherInfo : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mSharePrefarence.init(requireContext())
 
         getLocation()
-
 
         val drawerLayout=requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout)
         binding.btnDrawer.setOnClickListener {
@@ -165,7 +166,7 @@ class SevenDaysWeatherInfo : Fragment() {
 
 
     private fun apiCall(lat:Double,long:Double){
-        api.weather("$lat","$long","e13d7e0ca2e481d477ee300f03e94f3d").enqueue(object :Callback<CurrentWeather>{
+        api.weather("$lat","$long","metric","e13d7e0ca2e481d477ee300f03e94f3d").enqueue(object :Callback<CurrentWeather>{
             override fun onResponse(
                 call: Call<CurrentWeather>,
                 response: Response<CurrentWeather>
@@ -174,16 +175,41 @@ class SevenDaysWeatherInfo : Fragment() {
                 if (response.isSuccessful){
                     Log.d("TAG", "onResponse: ${response.message()}")
                     val data=response.body()?.weather?.get(0)
-                    val data2=response.body()
+                    val data2=response.body()!!
 
                     binding.apply {
                         weathertxt.text=data?.description.toString()
-                        degreebtn.text="${data2?.main?.temp_max?.minus(273.15)?.toInt().toString()}"
-                        tempMin.text="${data2?.main?.temp_min?.minus(273.15)?.toInt().toString()}"
-                        
+                        if (mSharePrefarence.getTemperatureUnit()==mSharePrefarence.TEMPERATURE_CELSIUS){
+                            weatherimage.load("http://openweathermap.org/img/wn/${data2.weather?.getOrNull(0)?.icon?:""}@2x.png")
+                            tempMax.text=data2.main !!.temp_max!!.toInt().toString()
+                            tempMin.text=data2.main.temp_min?.toInt().toString()
+                        }else{
+                            tempMax.text=data2.main?.temp_max?.toDouble()?.toFahrenheit()
+                            tempMin.text=data2.main?.temp_min?.toDouble()?.toFahrenheit()
+                        }
+
+
                         humidity.text="${data2?.main?.humidity.toString()}%"
-                        windSpeed.text= "${data2?.wind?.speed.toString()}Km/h"
+                        val windValue = data2.wind?.speed
+                        windSpeed.text = when (mSharePrefarence.getWindFormat()) {
+                            mSharePrefarence.WIND_MS -> {
+                                windValue.toString() + " m/s"
+                            }
+                            mSharePrefarence.WIND_KMH -> {
+                                windValue?.toKmHr() + " Km/h"
+                            }
+                            mSharePrefarence.WIND_MPH -> {
+                                windValue?.toMph() + " mph"
+                            }
+                            else -> {
+                                ""
+                            }
+                        }
+
                         changeofRain.text= "${data2?.wind?.gust.toString()}Km/h"
+                        changeofRain.text="${data2?.wind?.speed.toString()}"
+
+
                     }
 
                 }else{
@@ -199,7 +225,7 @@ class SevenDaysWeatherInfo : Fragment() {
 
 
     private fun handleRecyclerview(lat:Double,lon: Double) {
-        api.nextWeek("$lat","$lon","e13d7e0ca2e481d477ee300f03e94f3d").enqueue(object :Callback<ResponseNextWeek>{
+        api.nextWeek("$lat","$lon","metric","e13d7e0ca2e481d477ee300f03e94f3d").enqueue(object :Callback<ResponseNextWeek>{
             override fun onResponse(
                 call: Call<ResponseNextWeek>,
                 response: Response<ResponseNextWeek>

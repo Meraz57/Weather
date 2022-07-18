@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.weather.R
 import com.example.weather.databinding.ItemWeatherBinding
-import com.example.weather.ui.AllFuction
 import com.example.weather.dataclass.data.todayForecast.Hourly
-import com.example.weather.ui.toTime
+import com.example.weather.ui.toDate
 import java.util.*
 
 class AdapterWeather(val list: List<Hourly?>) : RecyclerView.Adapter<AdapterWeather.WeatherViewholder>() {
@@ -55,7 +54,7 @@ class AdapterWeather(val list: List<Hourly?>) : RecyclerView.Adapter<AdapterWeat
         holder.binding.apply {
             weatherFormat.text = capitalization(item.weather?.getOrNull(0)?.description?:"Unknown")
             image.load("http://openweathermap.org/img/wn/$imageUrl@2x.png")
-            time.text=item.dt?.toLong()?.toTime().toString()
+            time.text=item.dt?.toLong()?.toDate().toString()
 
 
         }

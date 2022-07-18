@@ -39,11 +39,20 @@ fun Context.toast(message: String) =
 
 fun Long.toDate(): String {
     val pattern = if (mSharePrefarence.getTimeFormat() == mSharePrefarence.TIME_24) {
-        "MMM d. EEE, HH:mm"
+        " HH:mm"
     } else {
-        "MMM d. EEE, hh:mm a"
+        " hh:mm a"
     }
    return SimpleDateFormat(pattern, Locale.getDefault()).format(Date(this * 1000))
+}
+
+fun Long.toOnlyDate(): String {
+    val pattern = if (mSharePrefarence.getTimeFormat() == mSharePrefarence.TIME_24) {
+        "MMM d. EEE"
+    } else {
+        "MMM d. EEE"
+    }
+    return SimpleDateFormat(pattern, Locale.getDefault()).format(Date(this * 1000))
 }
 
 fun Long.toTime(): String {
@@ -52,15 +61,15 @@ fun Long.toTime(): String {
 
 }
 
-//fun Long.toTime(): String {
-//    val pattern = if (mSharePrefarence.getTimeFormat() == mSharePrefarence.TIME_24) {
-//        "HH:mm"
-//    } else {
-//        "hh:mm a"
-//    }
-//    return SimpleDateFormat(pattern, Locale.getDefault()).format(Date(this * 1000))
-//
-//}
+/*fun Long.toTime(): String {
+    val pattern = if (mSharePrefarence.getTimeFormat() == mSharePrefarence.TIME_24) {
+        "HH:mm"
+    } else {
+        "hh:mm a"
+    }
+    return SimpleDateFormat(pattern, Locale.getDefault()).format(Date(this * 1000))
+
+}*/
 
 
 fun Long.toDateTime(): String {

@@ -3,6 +3,7 @@ package com.example.weather.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Context.MODE_PRIVATE
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
@@ -15,11 +16,13 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.jdrodi.utilities.showPermissionsAlert
 import com.example.weather.R
 import com.example.weather.adapter.AdapterWeather
@@ -63,6 +66,13 @@ class FindMyLocation : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mSharePrefarence.init(requireContext())
+
+        if (mSharePrefarence.getTemperatureUnit()==mSharePrefarence.TEMPERATURE_CELSIUS){
+            binding.temperatureType.text="C"
+        }else{
+            binding.temperatureType.text="F"
+        }
 
         binding.next7days.setOnClickListener {
             findNavController().navigate(R.id.sevenDaysWeatherInfo)
@@ -84,14 +94,20 @@ class FindMyLocation : Fragment() {
                                     val address = response.body()?.get(0)
 
                                     binding.apply {
-
+                                        if (response.isSuccessful){
+                                            layoutCurrentLocation.isVisible=true
+                                        }
+                                        currentLocation.text =
+                                            "${address?.name},${address?.country}"
+                                        currentLocation.setOnClickListener {
                                         handleDatabinding("${address?.lat}" ,"${address?.lon}")
                                         recyclerViewHandle("${address?.lat}","${address?.lon}")
+                                            address3.text = "${address?.name},${address?.country} "
+                                        }
 
-                                        currentLocation.text =
-                                            "${address?.state},${address?.country} "
 
-                                        address3.text = "${address?.state},${address?.country} "
+
+
 
                                     }
                                 } else {
@@ -117,7 +133,47 @@ class FindMyLocation : Fragment() {
 
             val key = binding.searchEt.text.toString()
             if (key.isNotEmpty()) {
-                api.searchLocation(key, 5, "e13d7e0ca2e481d477ee300f03e94f3d")
+                api.searchLocation(key, 5, "e13d7e0ca2e481d477ee300f03e94f3d").enqueue(object : Callback<ResponseLocation> {
+                    @SuppressLint("SetTextI18n")
+                    override fun onResponse(
+                        call: Call<ResponseLocation>,
+                        response: Response<ResponseLocation>
+                    ) {
+                        if (response.isSuccessful) {
+                            Log.d(TAG, "onResponse: Find")
+                            val address = response.body()?.get(0)
+
+                            binding.apply {
+                                if (response.isSuccessful){
+                                    layoutCurrentLocation.isVisible=true
+                                }
+                                currentLocation.text =
+                                    "${address?.name},${address?.country}"
+                                currentLocation.setOnClickListener {
+
+                                    handleDatabinding("${address?.lat}" ,"${address?.lon}")
+                                    recyclerViewHandle("${address?.lat}","${address?.lon}")
+                                    address3.text = "${address?.name},${address?.country} "
+                                }
+
+
+
+
+
+                            }
+                        } else {
+                            Log.d(TAG, "onResponse: ${response.errorBody().toString()}")
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseLocation>, t: Throwable) {
+                        Log.d(TAG, "onFailure: ${t.message}")
+                    }
+
+
+                })
+
+
             } else {
                 requireContext().toast("Please Write Something to Search")
 
@@ -209,10 +265,7 @@ class FindMyLocation : Fragment() {
                     Log.d(TAG, "onCreate: ${address[0].locality} ${address[0].countryName}")
                     val currentAddress = address.getOrNull(0)
 
-                    binding.currentLocation.text = "${currentAddress?.locality},${currentAddress?.countryName}"
-
-
-                   // TODO eikhane fun call dewa baki ache ..
+                /*    binding.currentLocation.text = "${currentAddress?.locality},${currentAddress?.countryName}"*/
 
 
                 }
@@ -224,7 +277,7 @@ class FindMyLocation : Fragment() {
 
     private fun handleDatabinding(lat: String, lon: String) {
 
-        api.weather("$lat", "$lon", "e13d7e0ca2e481d477ee300f03e94f3d")
+        api.weather("$lat", "$lon","metric", "e13d7e0ca2e481d477ee300f03e94f3d")
             .enqueue(object : Callback<CurrentWeather> {
                 override fun onResponse(
                     call: Call<CurrentWeather>,
@@ -236,11 +289,16 @@ class FindMyLocation : Fragment() {
                         val list = response.body()?.weather?.get(0)
                         binding.apply {
 
-                            temperature.text = data?.main?.temp?.minus(273.15)?.toInt().toString()
+                            if (mSharePrefarence.getTemperatureUnit()==mSharePrefarence.TEMPERATURE_CELSIUS){
+                                temperature.text = data?.main?.temp?.toInt().toString()
+                            }else{
+                                temperature.text=data!!.main!!.temp!!.toDouble().toFahrenheit()
+                            }
+                            temperatureImage.load("http://openweathermap.org/img/wn/${data?.weather?.getOrNull(0)?.icon?:""}@2x.png")
                             temperatureCondition.text = list?.description
-                            lastUpdate.text = "Last Updated :${data?.timezone?.toLong()?.toTime().toString()}"
-                            sunriseTime.text = "${data?.sys?.sunrise?.toLong()?.toTime().toString()}"
-                            sunsetTime.text = "${data?.sys?.sunset?.toLong()?.toTime().toString()}"
+                            lastUpdate.text = "Last Updated :${data?.dt?.toLong()?.toTime().toString()}"
+                            sunriseTime.text = "${data?.sys?.sunrise?.toLong()?.toDate().toString()}"
+                            sunsetTime.text = "${data?.sys?.sunset?.toLong()?.toDate().toString()}"
 
                         }
 

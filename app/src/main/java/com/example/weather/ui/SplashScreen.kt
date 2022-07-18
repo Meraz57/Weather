@@ -1,6 +1,7 @@
 package com.example.weather.ui
 import android.Manifest
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
@@ -83,7 +84,6 @@ class SplashScreen : Fragment() {
         }
 
         private fun checkPermission(): Boolean {
-
             if (ActivityCompat.checkSelfPermission(
                     requireContext(),
                     Manifest.permission.ACCESS_COARSE_LOCATION

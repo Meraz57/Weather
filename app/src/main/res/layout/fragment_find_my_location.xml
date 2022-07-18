@@ -70,6 +70,7 @@
                     android:id="@+id/layoutCurrentLocation"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
+                    android:visibility="gone"
                     android:background="@drawable/findlocation_bg">
 
                     <ImageView
@@ -91,7 +92,7 @@
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_toRightOf="@id/arrowicon"
                         android:fontFamily="@font/poppins_400"
-                        android:text="Bashundhora, Dhaka"
+                        android:text=""
                         android:textSize="@dimen/_12sdp" />
 
 
@@ -204,7 +205,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_4sdp"
                         android:fontFamily="@font/poppins_500"
-                        android:text="Nikunja 2 Dhaka"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="@dimen/_8ssp"
                         app:layout_constraintBottom_toBottomOf="@id/imageLocation"
@@ -362,10 +363,10 @@
                         android:layout_height="wrap_content"
                         android:text="Today" />
 
-<!--                    <com.google.android.material.tabs.TabItem-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Tomorrow" />-->
+                    <!--                    <com.google.android.material.tabs.TabItem-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:text="Tomorrow" />-->
 
                 </com.google.android.material.tabs.TabLayout>
 

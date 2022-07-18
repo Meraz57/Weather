@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.weather.R
 import com.example.weather.adapter.AdapterWeather
 import com.example.weather.databinding.FragmentFindByLocationBinding
@@ -57,8 +58,15 @@ class FindByLocation : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mSharePrefarence.init(requireContext())
         getLocation()
+
+        if (mSharePrefarence.getTemperatureUnit()==mSharePrefarence.TEMPERATURE_CELSIUS){
+            binding.temperatureType.text="C"
+
+        }else{
+            binding.temperatureType.text="F"
+        }
 
         binding.btnsevenday.setOnClickListener {
             findNavController().navigate(R.id.sevenDaysWeatherInfo)
@@ -93,7 +101,7 @@ class FindByLocation : Fragment() {
 
                       binding.address.text=  "${address.adminArea},${address.locality}"
                         binding.location.text="${address.adminArea},${address.locality}"
-                        binding.location1.text="${address.adminArea},${address.locality}"
+//                        binding.location1.text="${address.adminArea},${address.locality}"
                         handleWeatherData(address.latitude,address.longitude)
                         recyclerViewHandle(address.latitude,address.longitude)
                     }
@@ -205,7 +213,7 @@ class FindByLocation : Fragment() {
     private fun handleWeatherData(lat:Double,lon:Double) {
 
         val api = RetrofitOpenWeatherClient.apiInterfaceOW
-        api.weather("$lat", "$lon", "e13d7e0ca2e481d477ee300f03e94f3d")
+        api.weather("$lat", "$lon","metric", "e13d7e0ca2e481d477ee300f03e94f3d")
             .enqueue(object :Callback<CurrentWeather> {
                 override fun onResponse(
                     call: Call<CurrentWeather>,
@@ -218,10 +226,16 @@ class FindByLocation : Fragment() {
                         val weather=data.weather?.get(0)
 
                         binding.apply {
+                            temperatureImage.load("http://openweathermap.org/img/wn/${data.weather?.getOrNull(0)?.icon?:""}@2x.png")
 
-                            sunriseTime.text = data.sys?.sunrise?.toLong()?.toTime()
-                            sunsetTime.text = data.sys?.sunset?.toLong()?.toTime()
-                            temperature.text=data.main?.temp?.minus(273.15)?.toInt().toString()
+                            binding.lastUpdate.text=data.dt?.toLong()?.toDate()
+                            sunriseTime.text = data.sys?.sunrise?.toLong()?.toDate()
+                            sunsetTime.text = data.sys?.sunset?.toLong()?.toDate()
+                           if (mSharePrefarence.getTemperatureUnit()==mSharePrefarence.TEMPERATURE_CELSIUS){
+                               temperature.text=data.main?.temp?.toInt().toString()
+                           }else{
+                               temperature.text=data.main!!.temp!!.toDouble().toFahrenheit()
+                           }
                             temperatureCondition.text= weather?.description.toString()
 
 

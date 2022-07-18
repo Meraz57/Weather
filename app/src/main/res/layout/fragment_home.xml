@@ -103,8 +103,9 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/weatherimage"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
@@ -214,16 +215,7 @@
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_12sdp" />
 
-                            <TextView
 
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_5sdp"
-                                android:fontFamily="@font/poppins_500"
-                                android:text="km/h"
-                                android:textColor="@color/white"
-
-                                />
 
 
                         </LinearLayout>
@@ -307,14 +299,7 @@
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_12sdp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_5sdp"
-                                android:fontFamily="@font/poppins_500"
-                                android:text="km/h"
-                                android:textColor="@color/white"
-                                />
+
 
 
                         </LinearLayout>
@@ -702,4 +687,12 @@
     </androidx.core.widget.NestedScrollView>
 
 
+    <!--<ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/white"
+        />
+-->
 </RelativeLayout>

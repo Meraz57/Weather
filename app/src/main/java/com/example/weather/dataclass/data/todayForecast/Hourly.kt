@@ -1,6 +1,5 @@
 package com.example.weather.dataclass.data.todayForecast
 import com.google.gson.annotations.SerializedName
-import xyz.teamprojectx.weather.data.response.todayForecast.Weather
 
 data class Hourly(
     @SerializedName("clouds")

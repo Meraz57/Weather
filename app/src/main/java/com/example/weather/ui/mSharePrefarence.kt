@@ -21,6 +21,13 @@ object mSharePrefarence {
         return mSharedPref!!.getString(key, defValue)
     }
 
+    fun reading(key: String?,value: String?){
+
+        val preferences= mSharedPref!!.edit()
+        preferences.putString(key,value)
+        preferences.apply()
+    }
+
     fun write(key: String?, value: String?) {
         val prefsEditor = mSharedPref!!.edit()
         prefsEditor.putString(key, value)
@@ -35,25 +42,20 @@ object mSharePrefarence {
     }
 
 
-/*    fun saveCurrentWeather(currentWeather:ResponseWeather) {
+    fun saveCurrentWeather(location:String) {
         val prefsEditor = mSharedPref!!.edit()
-        val gson = Gson()
-        val json: String = gson.toJson(currentWeather)
-        prefsEditor.putString("current_weather", json)
+        prefsEditor.putString("current_weather", location)
         prefsEditor.apply()
     }
 
-    fun getCurrentWeather():ResponseWeather? {
-        val gson = Gson()
-        val json: String? = mSharedPref!!.getString("current_weather", null)
-        return if (json != null) {
-            val type: Type = object : TypeToken<ResponseWeather>() {}.type
-            gson.fromJson(json, type)
-        }else{
-            null
-        }
-    }
 
+
+    fun getCurrentWeather() {
+       mSharedPref!!.getString("current_weather", null)
+
+
+    }
+/*
     fun saveBlog(blogs:List<BlogData>) {
         val prefsEditor = mSharedPref!!.edit()
         val gson = Gson()
@@ -385,8 +387,9 @@ object mSharePrefarence {
         prefsEditor.apply()
     }
 
-    fun getTemperatureUnit(): String {
+    fun getTemperatureUnit(): String{
         return mSharedPref!!.getString("temperature_unit", TEMPERATURE_CELSIUS)!!
+
     }
 
     /**
@@ -417,7 +420,6 @@ object mSharePrefarence {
     }
 
     fun getTimeFormat(): String {
-
         return mSharedPref!!.getString("time_format", TIME_24)!!
 
     }

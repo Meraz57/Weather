@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.databinding.ItemSevendaysinfoBinding
 import com.example.weather.dataclass.data.nextWeek.Main
+import com.example.weather.ui.mSharePrefarence
+import com.example.weather.ui.toFahrenheit
 
 class SevendayInfoAdapter(val list: Main?) : RecyclerView.Adapter<SevendayInfoAdapter.SevendayinfoViewholder>() {
 
@@ -21,11 +23,22 @@ class SevendayInfoAdapter(val list: Main?) : RecyclerView.Adapter<SevendayInfoAd
         val item=list
         holder.binding.apply {
             if (item != null) {
-                temmMax.text="+${item.tempMax?.minus(273.15)?.toInt().toString()}°"
+                if (mSharePrefarence.getTemperatureUnit()==mSharePrefarence.TEMPERATURE_CELSIUS){
+                    temmMax.text="+${item.tempMax?.toInt().toString()}°"
+                }else{
+                    temmMax.text="${item.tempMax?.toDouble()?.toFahrenheit()}°"
+                }
+
             }
 
             if (item != null) {
-                tempMin.text="+${item.tempMin?.minus(273.15)?.toInt().toString()}°"
+                if (mSharePrefarence.getTemperatureUnit()==mSharePrefarence.TEMPERATURE_CELSIUS){
+                    tempMin.text="+${item.tempMin?.toInt().toString()}°"
+                }else{
+                    tempMin.text="+${item.tempMin?.toDouble()?.toFahrenheit()}°"
+                }
+
+
             }
 
         }

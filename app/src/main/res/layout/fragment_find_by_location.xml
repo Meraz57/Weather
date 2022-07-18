@@ -49,10 +49,9 @@
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:background="@drawable/findlocation_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-
-                    android:background="@color/white">
+                    android:layout_height="@dimen/_40sdp">
 
                     <ImageView
                         android:id="@+id/arrowicon"
@@ -79,10 +78,10 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <!--<LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:background="@drawable/findlocation_bg">
+                   >
 
                     <ImageView
                         android:layout_width="@dimen/_15sdp"
@@ -105,7 +104,7 @@
                         android:textSize="@dimen/_12sdp" />
 
 
-                </LinearLayout>
+                </LinearLayout>-->
 
             </LinearLayout>
 

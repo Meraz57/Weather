@@ -19,6 +19,7 @@ interface API {
      fun weather(
         @Query("lat") lat: String,
         @Query("lon") lon: String,
+        @Query("units") units: String,
         @Query("appid") apiKey: String
     ): Call<CurrentWeather>
 
@@ -35,12 +36,14 @@ interface API {
      fun nextWeek(
         @Query("lat") lat: String,
         @Query("lon") lon: String,
+        @Query("units") units: String,
         @Query("appid") apiKey: String
     ): Call<ResponseNextWeek>
 
     @GET("geo/1.0/direct")
      fun searchLocation(
         @Query("q")query:String,
+//        @Query("local_names")local_names:String,
         @Query("limit")limit:Int = 5,
         @Query("appid")apiKey:String
     ):Call<ResponseLocation>

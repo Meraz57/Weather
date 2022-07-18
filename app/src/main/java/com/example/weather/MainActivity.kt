@@ -122,11 +122,11 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        /*binding.btnWeatherFormat.setOnClickListener{
+        binding.btnWeatherFormat.setOnClickListener{
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             findNavController(R.id.fragmentContainerView).navigate(R.id.weatherFormat)
 
-        }*/
+        }
 
 
         binding.btnLoginLogout.setOnClickListener {
